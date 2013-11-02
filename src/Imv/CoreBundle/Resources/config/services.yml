@@ -1,0 +1,7 @@
+parameters:
+#    imv_core.example.class: Imv\CoreBundle\Example
+
+services:
+#    imv_core.example:
+#        class: %imv_core.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

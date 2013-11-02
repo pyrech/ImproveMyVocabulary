@@ -1,0 +1,4 @@
+
+ImvCoreBundle:
+    resource: "@ImvCoreBundle/Resources/config/routing.yml"
+    prefix:   /
