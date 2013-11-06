@@ -1,3 +1,7 @@
+imv_user:
+    resource: "@ImvUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 
 ImvCoreBundle:
     resource: "@ImvCoreBundle/Resources/config/routing.yml"

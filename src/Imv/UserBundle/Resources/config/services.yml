@@ -1,0 +1,7 @@
+parameters:
+#    imv_user.example.class: Imv\UserBundle\Example
+
+services:
+#    imv_user.example:
+#        class: %imv_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
