@@ -8,9 +8,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class WordType extends AbstractType
 {
-        /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
+    /**
+     * {@inheritDoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -23,9 +22,9 @@ class WordType extends AbstractType
             ))
         ;
     }
-    
+
     /**
-     * @param OptionsResolverInterface $resolver
+     * {@inheritDoc}
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
@@ -36,7 +35,7 @@ class WordType extends AbstractType
     }
 
     /**
-     * @return string
+     * {@inheritDoc}
      */
     public function getName()
     {

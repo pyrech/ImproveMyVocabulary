@@ -8,9 +8,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class TranslationType extends AbstractType
 {
-        /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
+    /**
+     * {@inheritDoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -22,9 +21,9 @@ class TranslationType extends AbstractType
             ))
         ;
     }
-    
+
     /**
-     * @param OptionsResolverInterface $resolver
+     * {@inheritDoc}
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
@@ -34,7 +33,7 @@ class TranslationType extends AbstractType
     }
 
     /**
-     * @return string
+     * {@inheritDoc}
      */
     public function getName()
     {
