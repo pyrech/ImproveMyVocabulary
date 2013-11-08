@@ -3,6 +3,6 @@ imv_user:
     prefix:   /
 
 
-ImvCoreBundle:
+imv_core:
     resource: "@ImvCoreBundle/Resources/config/routing.yml"
     prefix:   /
