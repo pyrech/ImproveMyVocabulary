@@ -1,0 +1,3 @@
+imv_core_word:
+    resource: "@ImvCoreBundle/Controller/WordController.php"
+    type:     annotation
