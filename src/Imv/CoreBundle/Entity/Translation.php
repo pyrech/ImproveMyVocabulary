@@ -31,7 +31,7 @@ class Translation
     /**
      * @var Locale
      *
-     * @ORM\ManyToOne(targetEntity="Imv\CoreBundle\Entity\Locale", inversedBy="word", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Imv\CoreBundle\Entity\Locale", cascade={"persist"})
      */
     private $locale;
 
