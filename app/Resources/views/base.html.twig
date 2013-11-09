@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}| Improve my vocabulary!{% endblock %}</title>
+        <title>{% block title %}| {{ 'site.name'|trans }}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {% stylesheets filter='cssrewrite'
         'public/css/bootstrap.css'
@@ -18,7 +18,7 @@
         <![endif]-->
     </head>
     <body>
-        <a class="sr-only" href="#content">##Skip to main content##</a>
+        <a class="sr-only" href="#content">{{ 'screen-reader.skip-content'|trans }}</a>
         {% include "::menu.html.twig" %}
 
         <main id="content" role="main">
@@ -26,7 +26,7 @@
         </main>
 
         <footer>
-            ##Developed by Loick Piera##
+            {{ 'site.footer'|trans }}
         </footer>
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>

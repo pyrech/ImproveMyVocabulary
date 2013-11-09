@@ -1,0 +1,20 @@
+site:
+    name: Improve my vocabulary!
+    footer: Developpé par Loick Piera
+    home: Accueil
+
+screen-reader:
+    skip-content: Aller au contenu
+    toggle-nav: Ouvrir/fermer le menu
+
+vocabulary:
+    mine: mon vocabulaire
+
+lists:
+    mine: mes listes
+
+tests:
+    mine: mes tests
+
+account:
+    mine: mon compte
