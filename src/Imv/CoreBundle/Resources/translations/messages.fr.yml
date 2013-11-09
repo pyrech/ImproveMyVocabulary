@@ -1,7 +1,7 @@
 site:
-    name: Improve my vocabulary!
     footer: Developpé par Loick Piera
     home: Accueil
+    name: Improve my vocabulary!
 
 screen-reader:
     skip-content: Aller au contenu
@@ -18,3 +18,26 @@ tests:
 
 account:
     mine: mon compte
+
+word:
+    add: Ajouter un nouveau mot
+    edit: Modification d'un mot
+    list: Liste des mots
+    new: Création d'un mot
+    show: Détail du mot
+    field:
+        details: Détails
+
+action:
+    add: Ajouter une nouvelle entrée
+    back-list: Retour à la liste
+    edit: Modifier
+
+entity:
+    actions: actions
+    field:
+        id: Id
+        createdAt: Créé le
+        updatedAt: Modifié le
+        details: Détails
+        details: Détails

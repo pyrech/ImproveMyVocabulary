@@ -1,40 +1,40 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Word</h1>
+    <h1>{{ 'word.show'|trans }}</h1>
 
     <table class="record_properties">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>{{ 'entity.field.id'|trans }}</th>
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Createdat</th>
+                <th>{{ 'entity.field.createdAt'|trans }}</th>
                 <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
-                <th>Details</th>
+                <th>{{ 'word.field.details'|trans }}</th>
                 <td>{{ entity.details }}</td>
             </tr>
             <tr>
-                <th>Updatedat</th>
+                <th>{{ 'entity.field.updatedAt'|trans }}</th>
                 <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
             </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('word') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('word_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('word') }}">
+                {{ 'action.back-list'|trans }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('word_edit', { 'id': entity.id }) }}">
+                {{ 'action.edit'|trans }}
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
 {% endblock %}

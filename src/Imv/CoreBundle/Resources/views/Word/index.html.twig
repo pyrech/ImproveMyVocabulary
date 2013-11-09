@@ -1,16 +1,16 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Word list</h1>
+    <h1>{{ 'word.list'|trans }}</h1>
 
     <table class="records_list">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Createdat</th>
-                <th>Details</th>
-                <th>Updatedat</th>
-                <th>Actions</th>
+                <th>{{ 'entity.field.id'|trans }}</th>
+                <th>{{ 'entity.field.createdAt'|trans }}</th>
+                <th>{{ 'word.field.details'|trans }}</th>
+                <th>{{ 'entity.field.updatedAt'|trans }}</th>
+                <th>{{ 'entity.actions'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -35,10 +35,10 @@
         </tbody>
     </table>
 
-        <ul>
+    <ul>
         <li>
             <a href="{{ path('word_new') }}">
-                Create a new entry
+                {{ 'word.add'|trans }}
             </a>
         </li>
     </ul>
