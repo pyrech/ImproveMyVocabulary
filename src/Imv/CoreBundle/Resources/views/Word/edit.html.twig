@@ -1,16 +1,16 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>{{ 'word.edit'|trans }}</h1>
+    <h1>{{ 'title.word.edit'|trans }}</h1>
 
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('word') }}">
-            {{ 'action.back-list'|trans }}
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('word') }}">
+                {{ 'action.entity.back-list'|trans }}
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
 {% endblock %}

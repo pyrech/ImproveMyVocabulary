@@ -1,24 +1,24 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>{{ 'word.show'|trans }}</h1>
+    <h1>{{ 'title.word.show'|trans }}</h1>
 
     <table class="record_properties">
         <tbody>
             <tr>
-                <th>{{ 'entity.field.id'|trans }}</th>
+                <th>{{ 'field.entity.id'|trans }}</th>
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>{{ 'entity.field.createdAt'|trans }}</th>
+                <th>{{ 'field.entity.createdAt'|trans }}</th>
                 <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
-                <th>{{ 'word.field.details'|trans }}</th>
+                <th>{{ 'field.word.details'|trans }}</th>
                 <td>{{ entity.details }}</td>
             </tr>
             <tr>
-                <th>{{ 'entity.field.updatedAt'|trans }}</th>
+                <th>{{ 'field.entity.updatedAt'|trans }}</th>
                 <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
             </tr>
         </tbody>
@@ -27,12 +27,12 @@
     <ul class="record_actions">
         <li>
             <a href="{{ path('word') }}">
-                {{ 'action.back-list'|trans }}
+                {{ 'action.entity.back-list'|trans }}
             </a>
         </li>
         <li>
             <a href="{{ path('word_edit', { 'id': entity.id }) }}">
-                {{ 'action.edit'|trans }}
+                {{ 'action.entity.edit'|trans }}
             </a>
         </li>
         <li>{{ form(delete_form) }}</li>

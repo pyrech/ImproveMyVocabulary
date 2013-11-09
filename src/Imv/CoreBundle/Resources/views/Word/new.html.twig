@@ -1,14 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>{{ 'word.new'|trans }}</h1>
+    <h1>{{ 'title.word.new'|trans }}</h1>
 
     {{ form(form) }}
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('word') }}">
-            {{ 'action.back-list'|trans }}
+            {{ 'action.entity.back-list'|trans }}
         </a>
     </li>
 </ul>

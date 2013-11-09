@@ -71,12 +71,13 @@ class WordController extends Controller
     */
     private function createCreateForm(Word $entity)
     {
+        $translator = $this->get('translator');
         $form = $this->createForm(new WordType(), $entity, array(
             'action' => $this->generateUrl('word_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => $translator->trans('action.entity.create')));
 
         return $form;
     }
@@ -160,12 +161,13 @@ class WordController extends Controller
     */
     private function createEditForm(Word $entity)
     {
+        $translator = $this->get('translator');
         $form = $this->createForm(new WordType(), $entity, array(
             'action' => $this->generateUrl('word_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => $translator->trans('action.entity.update')));
 
         return $form;
     }
@@ -237,10 +239,11 @@ class WordController extends Controller
      */
     private function createDeleteForm($id)
     {
+        $translator = $this->get('translator');
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('word_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => $translator->trans('action.entity.delete')))
             ->getForm()
         ;
     }

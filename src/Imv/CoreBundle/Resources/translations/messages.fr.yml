@@ -7,37 +7,39 @@ screen-reader:
     skip-content: Aller au contenu
     toggle-nav: Ouvrir/fermer le menu
 
-vocabulary:
-    mine: mon vocabulaire
-
-lists:
-    mine: mes listes
-
-tests:
-    mine: mes tests
+menu:
+    vocabulary:
+        title: mon vocabulaire
+        wordlists: mes listes
+        training : entrainement
 
 account:
     mine: mon compte
 
-word:
-    add: Ajouter un nouveau mot
-    edit: Modification d'un mot
-    list: Liste des mots
-    new: Création d'un mot
-    show: Détail du mot
-    field:
-        details: Détails
+title:
+    word:
+        show: Détail du mot
+        edit: Modification d'un mot
+        new: Création d'un mot
+        list: Liste des mots
 
 action:
-    add: Ajouter une nouvelle entrée
-    back-list: Retour à la liste
-    edit: Modifier
+    entity:
+        add: Ajouter une nouvelle entrée
+        create: Créer
+        back-list: Retour à la liste
+        delete: Supprimer
+        edit: Modifier
+        update: Mettre à jour
+        show: Voir
+    word:
+        add: Ajouter un nouveau mot
 
-entity:
-    actions: actions
-    field:
+field:
+    entity:
         id: Id
-        createdAt: Créé le
-        updatedAt: Modifié le
-        details: Détails
+        createdAt: Date de création
+        updatedAt: Date de modification
+        actions: Actions
+    word:
         details: Détails
