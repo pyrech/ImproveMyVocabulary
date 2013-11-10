@@ -17,6 +17,8 @@ account:
     mine: mon compte
 
 title:
+    home:
+        index: Bienvenue sur Improve My Vocabulary
     word:
         show: Détail du mot
         edit: Modification d'un mot
