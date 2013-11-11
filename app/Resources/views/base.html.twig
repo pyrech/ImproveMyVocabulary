@@ -4,8 +4,8 @@
         <meta charset="UTF-8" />
         <title>{% block title %}| {{ 'site.name'|trans }}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        {% stylesheets filter='cssrewrite'
-        'public/css/bootstrap.css'
+        {% stylesheets filter='cssrewrite' output='compiled/main.css'
+        'vendor/bootstrap/css/bootstrap.css'
         'public/css/main.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
         {% endstylesheets %}
@@ -30,8 +30,8 @@
         </footer>
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-        {% javascripts
-        'public/js/bootstrap.js' %}
+        {% javascripts output='compiled/main.js'
+        'vendor/bootstrap/js/bootstrap.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
     </body>
