@@ -30,9 +30,10 @@
             {{ 'site.footer'|trans }}
         </footer>
 
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
         {% javascripts output='compiled/main.js'
-        'vendor/bootstrap/js/bootstrap.js' %}
+        'vendor/jquery/jquery.1.10.2.min.js'
+        'vendor/bootstrap/js/bootstrap.js'
+        'public/js/main.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
         {% block javascripts %}{% endblock %}
