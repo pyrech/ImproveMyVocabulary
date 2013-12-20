@@ -3,8 +3,7 @@
 if (!isset($_SERVER['HTTP_HOST'])) {
     exit('This script cannot be run from the CLI. Run it from a browser.');
 }
-include '../app/IP.php';
-if (!in_array(@$_SERVER['REMOTE_ADDR'], getAllowedIP())) {
+if (!in_array(@$_SERVER['REMOTE_ADDR'], include '../app/IP.php')) {
     header('HTTP/1.0 403 Forbidden');
     exit('This script is only accessible from localhost.');
 }

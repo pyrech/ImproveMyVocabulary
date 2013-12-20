@@ -4,10 +4,8 @@
  *
  * @return array
  */
-function getAllowedIP() {
-    return array(
-        '127.0.0.1',
-        'fe80::1',
-        '::1',
-    );
-}
+return array(
+    '127.0.0.1',
+    'fe80::1',
+    '::1',
+);
