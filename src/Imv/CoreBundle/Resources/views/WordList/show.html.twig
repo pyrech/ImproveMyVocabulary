@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+ 
+{% block title %}{{ 'title.wordlist.show'|trans({'%name%': wordlist.name}) }}{% endblock %}
+ 
+{% block body %}
+    <div>
+        {{ wordlist.name }}
+        créé le {{ wordlist.createdAt|date('d/m/Y') }}
+
+
+        <ul>
+          {% for w in wordlist.words %}
+            <li>
+              {{ w.details }}
+              créé le {{ w.createdAt|date('d/m/Y') }}
+            </li>
+          {% else %}
+            <li>Currently not any word added.</li>
+          {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

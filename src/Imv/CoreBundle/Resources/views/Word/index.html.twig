@@ -16,17 +16,17 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('word_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('imv_word_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.details }}</td>
                 <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('word_show', { 'id': entity.id }) }}">{{ 'action.entity.show'|trans }}</a>
+                        <a href="{{ path('imv_word_show', { 'id': entity.id }) }}">{{ 'action.entity.show'|trans }}</a>
                     </li>
                     <li>
-                        <a href="{{ path('word_edit', { 'id': entity.id }) }}">{{ 'action.entity.edit'|trans }}</a>
+                        <a href="{{ path('imv_word_edit', { 'id': entity.id }) }}">{{ 'action.entity.edit'|trans }}</a>
                     </li>
                 </ul>
                 </td>
@@ -37,7 +37,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('word_new') }}">
+            <a href="{{ path('imv_word_new') }}">
                 {{ 'action.word.add'|trans }}
             </a>
         </li>

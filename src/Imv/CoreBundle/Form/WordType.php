@@ -18,6 +18,7 @@ class WordType extends AbstractType
             ->add('translations', 'collection', array(
                 'type' => new TranslationType(),
                 'allow_add' => true,
+                'allow_delete' => true,
                 'by_reference' => false
             ))
         ;

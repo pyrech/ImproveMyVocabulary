@@ -3,14 +3,59 @@
 {% block body -%}
     <h1>{{ 'title.word.edit'|trans }}</h1>
 
-    {{ form(edit_form) }}
+    <form action="{{ '' }}" method="POST" {{ form_enctype(edit_form) }}>
+        {{ form_start(edit_form) }}
+        {{ form_errors(edit_form) }}
+
+        <div>
+            {{ form_label(edit_form.details, 'field.word.details'|trans) }}
+            {{ form_errors(edit_form.details) }}
+            {{ form_widget(edit_form.details) }}
+        </div>
+
+        <ul class="translations" data-prototype="{{ form_widget(edit_form.translations.vars.prototype)|e }}">
+            {% for translation in edit_form.translations %}
+                <li>
+                    <div>
+                        {{ form_row(translation) }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {# Génération des champs pas encore écrits.
+           Dans cet exemple, ce serait « date », « auteur » et « publication »,
+           mais aussi le champ CSRF (géré automatiquement par Symfony !)
+           et tous les champs cachés (type « hidden »). #}
+        {{ form_rest(edit_form) }}
+    </form>
 
     <ul class="record_actions">
         <li>
-            <a href="{{ path('word') }}">
+            <a href="{{ path('imv_word') }}">
                 {{ 'action.entity.back-list'|trans }}
             </a>
         </li>
         <li>{{ form(delete_form) }}</li>
     </ul>
+{% endblock %}
+
+{% block javascripts %}
+<script defer="true">
+    var collectionHolder = $('ul.translations');
+    var addTranslationLink = $('<a href="#" class="add_translation_link">{{ 'action.translation.add'|trans }}</a>');
+    var newLinkLi = $('<li></li>').append(addTranslationLink);
+
+    jQuery(document).ready(function() {
+        collectionHolder.find('li').each(function() {
+            Imv.addCollectionFormDeleteLink($(this));
+        });
+        collectionHolder.append(newLinkLi);
+        addTranslationLink.on('click', function(e) {
+            // Prevent the browser to add a « # » in the URL
+            e.preventDefault();
+            Imv.addCollectionForm(collectionHolder, newLinkLi);
+        });
+    });
+</script>
 {% endblock %}

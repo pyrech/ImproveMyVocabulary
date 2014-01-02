@@ -21,7 +21,7 @@ class WordController extends Controller
     /**
      * Lists all Word entities.
      *
-     * @Route("/", name="word")
+     * @Route("/", name="imv_word")
      * @Method("GET")
      * @Template()
      */
@@ -35,10 +35,11 @@ class WordController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Word entity.
      *
-     * @Route("/", name="word_create")
+     * @Route("/", name="imv_word_create")
      * @Method("POST")
      * @Template("ImvCoreBundle:Word:new.html.twig")
      */
@@ -85,7 +86,7 @@ class WordController extends Controller
     /**
      * Displays a form to create a new Word entity.
      *
-     * @Route("/new", name="word_new")
+     * @Route("/new", name="imv_word_new")
      * @Method("GET")
      * @Template()
      */
@@ -103,7 +104,7 @@ class WordController extends Controller
     /**
      * Finds and displays a Word entity.
      *
-     * @Route("/{id}", name="word_show")
+     * @Route("/{id}", name="imv_word_show")
      * @Method("GET")
      * @Template()
      */
@@ -128,7 +129,7 @@ class WordController extends Controller
     /**
      * Displays a form to edit an existing Word entity.
      *
-     * @Route("/{id}/edit", name="word_edit")
+     * @Route("/{id}/edit", name="imv_word_edit")
      * @Method("GET")
      * @Template()
      */
@@ -174,7 +175,7 @@ class WordController extends Controller
     /**
      * Edits an existing Word entity.
      *
-     * @Route("/{id}", name="word_update")
+     * @Route("/{id}", name="imv_word_update")
      * @Method("PUT")
      * @Template("ImvCoreBundle:Word:edit.html.twig")
      */
@@ -207,7 +208,7 @@ class WordController extends Controller
     /**
      * Deletes a Word entity.
      *
-     * @Route("/{id}", name="word_delete")
+     * @Route("/{id}", name="imv_word_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)

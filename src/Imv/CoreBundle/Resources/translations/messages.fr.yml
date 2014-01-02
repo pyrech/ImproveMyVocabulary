@@ -19,6 +19,9 @@ account:
 title:
     home:
         index: Bienvenue sur Improve My Vocabulary
+    wordlist:
+        index: Toutes les listes de mots
+        show: Liste %name%
     word:
         show: Détail du mot
         edit: Modification d'un mot
@@ -34,6 +37,8 @@ action:
         edit: Modifier
         update: Mettre à jour
         show: Voir
+    translation:
+        add: Ajouter une traduction
     word:
         add: Ajouter un nouveau mot
 

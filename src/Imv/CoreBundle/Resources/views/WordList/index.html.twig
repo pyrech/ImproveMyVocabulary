@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+ 
+{% block title %}{{ 'title.wordlist.index'|trans }}{% endblock %}
+ 
+{% block body %}
+    <ul>
+      {% for wl in wordlists %}
+        <li>
+          <a href="{{ path('imv_wordlist_show', {'id': wl.id}) }}">{{ wl.name }}</a>
+          créé le {{ wl.createdAt|date('d/m/Y') }}
+        </li>
+      {% else %}
+        <li>Currently not any lists added.</li>
+      {% endfor %}
+    </ul>
+{% endblock %}

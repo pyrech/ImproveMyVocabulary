@@ -1,9 +1,4 @@
 
-imv_home:
-    resource: "@ImvCoreBundle/Controller/HomeController.php"
-    type:     annotation
-
-
-imv_core_word:
-    resource: "@ImvCoreBundle/Controller/WordController.php"
+imv_core:
+    resource: "@ImvCoreBundle/Controller"
     type:     annotation

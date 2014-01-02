@@ -46,7 +46,7 @@ class Word
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="Imv\CoreBundle\Entity\Translation", mappedBy="word", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Imv\CoreBundle\Entity\Translation", mappedBy="word", cascade={"persist", "remove"})
      */
     private $translations;
 
