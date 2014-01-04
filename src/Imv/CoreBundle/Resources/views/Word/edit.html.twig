@@ -1,7 +1,11 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}{{ 'title.word.edit'|trans }}{% endblock %}
+
 {% block body -%}
-    <h1>{{ 'title.word.edit'|trans }}</h1>
+    <div class="page-header">
+        <h1>{{ 'title.word.edit'|trans }}</h1>
+    </div>
 
     <form action="{{ '' }}" method="POST" {{ form_enctype(edit_form) }}>
         {{ form_start(edit_form) }}
