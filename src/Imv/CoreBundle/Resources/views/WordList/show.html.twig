@@ -38,10 +38,16 @@
                     <td>
                         <ul>
                             <li>
-                                <a href="{{ path('imv_word_show', { 'id': w.id }) }}">{{ 'action.entity.show'|trans }}</a>
+                                <a href="{{ path('imv_word_show', { 'id': w.id }) }}">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    {{ 'action.entity.show'|trans }}
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ path('imv_word_edit', { 'id': w.id }) }}">{{ 'action.entity.edit'|trans }}</a>
+                                <a href="{{ path('imv_word_edit', { 'id': w.id }) }}">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    {{ 'action.entity.edit'|trans }}
+                                </a>
                             </li>
                         </ul>
                     </td>
