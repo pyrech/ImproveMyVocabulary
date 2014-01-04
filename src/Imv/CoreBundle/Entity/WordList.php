@@ -23,6 +23,13 @@ class WordList
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="count", type="integer")
+     */
+    private $count;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -60,6 +67,7 @@ class WordList
      * Constructor
      */
     public function __construct() {
+      $this->count = 0;
       $this->createdAt = new \DateTime();
       $this->public = false;
       $this->updatedAt = new \DateTime();
@@ -69,11 +77,21 @@ class WordList
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get the number of words added
+     *
+     * @return integer
+     */
+    public function getCount()
+    {
+        return $this->count;
     }
 
     /**
@@ -172,6 +190,7 @@ class WordList
     public function addWord(Word $word)
     {
         $this->words[] = $word;
+        $this->count++;
     }
    
     /**
@@ -182,6 +201,7 @@ class WordList
     public function removeWord(Word $word)
     {
         $this->words->removeElement($word);
+        $this->count--;
     }
    
     /**

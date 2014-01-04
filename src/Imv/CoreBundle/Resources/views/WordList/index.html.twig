@@ -11,6 +11,7 @@
         <thead>
             <tr>
                 <th>Nom de la liste</th>
+                <th>Nombre de mots</th>
                 <th>{{ 'field.entity.createdAt'|trans }}</th>
                 <th>{{ 'field.entity.updatedAt'|trans }}</th>
             </tr>
@@ -20,6 +21,9 @@
                 <tr>
                     <td>
                         <a href="{{ path('imv_wordlist_show', {'id': wl.id}) }}">{{ wl.name }}</a>
+                    </td>
+                    <td>
+                        {{ wl.count }}
                     </td>
                     <td>
                         {{ wl.createdAt|date('d/m/Y') }}
