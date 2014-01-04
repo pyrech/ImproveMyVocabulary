@@ -1,6 +1,8 @@
 {% extends "::base.html.twig" %}
  
 {% block title %}{{ 'title.wordlist.show'|trans({'%name%': wordlist.name}) }}{% endblock %}
+
+{% set _format_datetime = 'format.datetime'|trans %}
  
 {% block body %}
     <div class="page-header">
@@ -9,14 +11,14 @@
 
     <div>
         {{ wordlist.name }}
-        créé le {{ wordlist.createdAt|date('d/m/Y') }}
+        créé le {{ wordlist.createdAt|date(_format_datetime) }}
 
 
         <ul>
           {% for w in wordlist.words %}
             <li>
               {{ w.details }}
-              créé le {{ w.createdAt|date('d/m/Y') }}
+              créé le {{ w.createdAt|date(_format_datetime) }}
             </li>
           {% else %}
             <li>Currently not any word added.</li>

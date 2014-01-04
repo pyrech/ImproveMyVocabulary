@@ -1,7 +1,9 @@
 {% extends "::base.html.twig" %}
  
 {% block title %}{{ 'title.wordlist.index'|trans }}{% endblock %}
- 
+
+{% set _format_datetime = 'format.datetime'|trans %}
+
 {% block body %}
     <div class="page-header">
         <h1>{{ 'title.wordlist.index'|trans }}</h1>
@@ -26,10 +28,10 @@
                         {{ wl.count }}
                     </td>
                     <td>
-                        {{ wl.createdAt|date('d/m/Y') }}
+                        {{ wl.createdAt|date(_format_datetime) }}
                     </td>
                     <td>
-                        {{ wl.updatedAt|date('d/m/Y') }}
+                        {{ wl.updatedAt|date(_format_datetime) }}
                     </td>
                 </tr>
             {% else %}

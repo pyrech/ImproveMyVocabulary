@@ -2,6 +2,8 @@
 
 {% block title %}{{ 'title.word.list'|trans }}{% endblock %}
 
+{% set _format_datetime = 'format.datetime'|trans %}
+
 {% block body -%}
     <div class="page-header">
         <h1>{{ 'title.word.list'|trans }}</h1>
@@ -21,9 +23,9 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('imv_word_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.createdAt %}{{ entity.createdAt|date(_format_datetime) }}{% endif %}</td>
                 <td>{{ entity.details }}</td>
-                <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.updatedAt %}{{ entity.updatedAt|date(_format_datetime) }}{% endif %}</td>
                 <td>
                 <ul>
                     <li>

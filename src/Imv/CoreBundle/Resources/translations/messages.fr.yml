@@ -1,3 +1,6 @@
+format:
+    datetime: \l\e d/m/Y à H\hm
+
 site:
     footer: Developpé par Loick Piera
     home: Accueil

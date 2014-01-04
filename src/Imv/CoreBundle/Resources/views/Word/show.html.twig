@@ -2,6 +2,8 @@
 
 {% block title %}{{ 'title.word.show'|trans }}{% endblock %}
 
+{% set _format_datetime = 'format.datetime'|trans %}
+
 {% block body -%}
     <div class="page-header">
         <h1>{{ 'title.word.show'|trans }}</h1>
@@ -15,7 +17,7 @@
             </tr>
             <tr>
                 <th>{{ 'field.entity.createdAt'|trans }}</th>
-                <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+                <td>{{ entity.createdAt|date(_format_datetime) }}</td>
             </tr>
             <tr>
                 <th>{{ 'field.word.details'|trans }}</th>
@@ -23,7 +25,7 @@
             </tr>
             <tr>
                 <th>{{ 'field.entity.updatedAt'|trans }}</th>
-                <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
+                <td>{{ entity.updatedAt|date(_format_datetime) }}</td>
             </tr>
         </tbody>
     </table>
