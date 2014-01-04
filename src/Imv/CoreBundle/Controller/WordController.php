@@ -54,7 +54,7 @@ class WordController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('word_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('imv_word_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -74,7 +74,7 @@ class WordController extends Controller
     {
         $translator = $this->get('translator');
         $form = $this->createForm(new WordType(), $entity, array(
-            'action' => $this->generateUrl('word_create'),
+            'action' => $this->generateUrl('imv_word_create'),
             'method' => 'POST',
         ));
 
@@ -164,7 +164,7 @@ class WordController extends Controller
     {
         $translator = $this->get('translator');
         $form = $this->createForm(new WordType(), $entity, array(
-            'action' => $this->generateUrl('word_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('imv_word_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -196,7 +196,7 @@ class WordController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('word_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('imv_word_edit', array('id' => $id)));
         }
 
         return array(
@@ -242,7 +242,7 @@ class WordController extends Controller
     {
         $translator = $this->get('translator');
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('word_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('imv_word_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => $translator->trans('action.entity.delete')))
             ->getForm()
