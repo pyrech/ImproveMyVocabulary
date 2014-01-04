@@ -20,16 +20,26 @@
     </head>
     <body>
         <a class="sr-only" href="#content">{{ 'screen-reader.skip-content'|trans }}</a>
-        {% include "::menu.html.twig" %}
-
-        <main id="content" role="main">
-            {% block body %}{% endblock %}
-        </main>
-
-        <footer>
-            {{ 'site.footer'|trans }}
-        </footer>
-
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    {% include "::navbar.html.twig" %}
+                    {% block header_extra %}{% endblock %}
+                </div>
+            </div>
+            <main class="row clearfix" id="content" role="main">
+                <div class="col-md-12 column">
+                    {% block body %}{% endblock %}
+                </div>
+            </main>
+            <footer class="row clearfix">
+                <div class="col-md-12 column">
+                    <p>
+                        {{ 'site.footer'|trans }}
+                    </p>
+                </div>
+            </footer>
+        </div>
         {% javascripts output='compiled/main.js'
         'vendor/jquery/jquery.1.10.2.min.js'
         'vendor/bootstrap/js/bootstrap.js'

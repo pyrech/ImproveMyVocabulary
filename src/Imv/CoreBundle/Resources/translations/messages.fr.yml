@@ -18,7 +18,7 @@ account:
 
 title:
     home:
-        index: Bienvenue sur Improve My Vocabulary
+        index: Bienvenue sur IMV
     wordlist:
         index: Toutes les listes de mots
         show: Liste %name%
@@ -27,6 +27,14 @@ title:
         edit: Modification d'un mot
         new: Création d'un mot
         list: Liste des mots
+
+content:
+    home:
+        index:
+            description: |
+                         Improve My Vocabulary vous permet d'améliorer VOTRE vocabulaire dans une langue étrangère.
+                         Votre professeur vous demande de réviser une liste de mot pour un contrôle ? Vous avez du mal à apprendre et retenir du vocabulaire ? IMV est fait pour vous !
+            try: Essayer
 
 action:
     entity:

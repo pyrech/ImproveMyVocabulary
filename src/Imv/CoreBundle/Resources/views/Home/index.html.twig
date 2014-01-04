@@ -1,7 +1,13 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>{{ 'title.home.index'|trans }}</h1>
-
-    <p></p>
+    <div class="jumbotron">
+        <h1>{{ 'title.home.index'|trans }}</h1>
+        <p>
+            {{ 'content.home.index.description'|trans|nl2br }}
+        </p>
+        <p>
+            <a class="btn btn-primary btn-large" href="#">{{ 'content.home.index.try'|trans }}</a>
+        </p>
+    </div>
 {% endblock %}

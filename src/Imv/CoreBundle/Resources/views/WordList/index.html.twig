@@ -3,14 +3,32 @@
 {% block title %}{{ 'title.wordlist.index'|trans }}{% endblock %}
  
 {% block body %}
-    <ul>
-      {% for wl in wordlists %}
-        <li>
-          <a href="{{ path('imv_wordlist_show', {'id': wl.id}) }}">{{ wl.name }}</a>
-          créé le {{ wl.createdAt|date('d/m/Y') }}
-        </li>
-      {% else %}
-        <li>Currently not any lists added.</li>
-      {% endfor %}
-    </ul>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom de la liste</th>
+                <th>{{ 'field.entity.createdAt'|trans }}</th>
+                <th>{{ 'field.entity.updatedAt'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for wl in wordlists %}
+                <tr>
+                    <td>
+                        <a href="{{ path('imv_wordlist_show', {'id': wl.id}) }}">{{ wl.name }}</a>
+                    </td>
+                    <td>
+                        {{ wl.createdAt|date('d/m/Y') }}
+                    </td>
+                    <td>
+                        {{ wl.updatedAt|date('d/m/Y') }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>Currently not any lists added.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
