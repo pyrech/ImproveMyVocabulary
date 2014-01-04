@@ -19,24 +19,6 @@ class WordController extends Controller
 {
 
     /**
-     * Lists all Word entities.
-     *
-     * @Route("/", name="imv_word")
-     * @Method("GET")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('ImvCoreBundle:Word')->findAll();
-
-        return array(
-            'entities' => $entities,
-        );
-    }
-
-    /**
      * Creates a new Word entity.
      *
      * @Route("/", name="imv_word_create")
