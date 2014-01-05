@@ -210,7 +210,7 @@ class WordController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('word'));
+        return $this->redirect($this->generateUrl('imv_wordlist'));
     }
 
     /**
