@@ -38,6 +38,8 @@ class Translation
     private $locale;
 
     /**
+     * @var Word
+     *
      * @ORM\ManyToOne(targetEntity="Imv\CoreBundle\Entity\Word", inversedBy="translations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */

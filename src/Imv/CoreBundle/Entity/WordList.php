@@ -46,6 +46,8 @@ class WordList
     private $public;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
      * @ORM\ManyToMany(targetEntity="Imv\CoreBundle\Entity\Word", cascade={"persist"})
      */
     private $words;

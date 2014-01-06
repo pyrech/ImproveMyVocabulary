@@ -31,6 +31,8 @@ class Word
     private $details;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
      * @ORM\OneToMany(targetEntity="Imv\CoreBundle\Entity\Translation", mappedBy="word", cascade={"persist", "remove"})
      */
     private $translations;
