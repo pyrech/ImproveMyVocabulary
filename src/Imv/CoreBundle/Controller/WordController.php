@@ -164,6 +164,7 @@ class WordController extends EntityController
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a Word entity.
      *

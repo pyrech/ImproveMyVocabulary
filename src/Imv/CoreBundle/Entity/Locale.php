@@ -50,6 +50,7 @@ class Locale
      * Set code
      *
      * @param string $code
+     *
      * @return Locale
      */
     public function setCode($code)
@@ -72,6 +73,7 @@ class Locale
      * Set name
      *
      * @param string $name
+     *
      * @return Locale
      */
     public function setName($name)

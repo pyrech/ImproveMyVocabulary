@@ -59,6 +59,7 @@ class Translation
      * Set term
      *
      * @param string $term
+     *
      * @return Translation
      */
     public function setTerm($term)
@@ -82,6 +83,7 @@ class Translation
      * Set the locale for the current translation
      *
      * @param Locale $locale
+     *
      * @return Translation
      */
     public function setLocale($locale)
@@ -104,6 +106,7 @@ class Translation
      * Set word
      *
      * @param Word $word
+     *
      * @return Translation
      */
     public function setWord($word)

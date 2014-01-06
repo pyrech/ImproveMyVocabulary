@@ -56,7 +56,8 @@ class WordList
     /**
      * Constructor
      */
-    public function __construct() {
+    public function __construct()
+    {
       $this->count = 0;
       $this->public = false;
       $this->words = new ArrayCollection();
@@ -86,6 +87,7 @@ class WordList
      * Set name
      *
      * @param string $name
+     *
      * @return WordList
      */
     public function setName($name)
@@ -108,6 +110,7 @@ class WordList
      * Set public
      *
      * @param boolean $public
+     *
      * @return WordList
      */
     public function setPublic($public = true)

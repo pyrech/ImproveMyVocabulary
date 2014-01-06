@@ -58,6 +58,7 @@ class Word
      * Set details
      *
      * @param string $details
+     *
      * @return Word
      */
     public function setDetails($details)
@@ -80,6 +81,7 @@ class Word
      * Add a translation
      *
      * @param Translation $translation
+     *
      * @return Word
      */
     public function addTranslation(Translation $translation)
@@ -93,6 +95,7 @@ class Word
      * Remove a translation
      *
      * @param Translation $translation
+     *
      * @return Word
      */
     public function removeTranslation(Translation $translation)
@@ -114,6 +117,7 @@ class Word
      * Get the translation for a given locale
      *
      * @param Locale $locale
+     *
      * @return Translation
      */
     public function getTranslation(Locale $locale)

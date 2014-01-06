@@ -14,8 +14,10 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     /**
-     * @ORM\Id
+     * @var integer
+     *
      * @ORM\Column(type="integer")
+     * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
