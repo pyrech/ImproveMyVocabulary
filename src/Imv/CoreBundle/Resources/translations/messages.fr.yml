@@ -25,6 +25,7 @@ title:
     wordlist:
         index: Toutes les listes de mots
         show: Liste %name%
+        new: Création d'une liste
     word:
         show: Détail du mot
         edit: Modification d'un mot
@@ -52,6 +53,8 @@ action:
         add: Ajouter une traduction
     word:
         add: Ajouter un nouveau mot
+    wordlist:
+        add: Créer une nouvelle liste
 
 field:
     entity:

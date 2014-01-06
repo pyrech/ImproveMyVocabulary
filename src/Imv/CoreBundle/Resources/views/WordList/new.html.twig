@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ 'title.wordlist.new'|trans }}{% endblock %}
+
+{% block body -%}
+    <div class="page-header">
+        <h1>{{ 'title.wordlist.new'|trans }}</h1>
+    </div>
+
+    {{ form(form) }}
+
+    <ul class="record_actions">
+    </ul>
+{% endblock %}
