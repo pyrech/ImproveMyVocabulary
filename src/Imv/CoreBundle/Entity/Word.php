@@ -109,4 +109,19 @@ class Word
     {
         return $this->translations;
     }
+
+    /**
+     * Get the translation for a given locale
+     *
+     * @param Locale $locale
+     * @return Translation
+     */
+    public function getTranslation(Locale $locale)
+    {
+        foreach ($this->translations as $translation) {
+            if ($translation->getLocale() == $locale) {
+                return $translation;
+            }
+        }
+    }
 }
