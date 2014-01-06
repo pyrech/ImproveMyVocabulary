@@ -3,7 +3,6 @@
 namespace Imv\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -15,8 +14,15 @@ use Imv\CoreBundle\Form\WordType;
  *
  * @Route("/word")
  */
-class WordController extends Controller
+class WordController extends EntityController
 {
+    /**
+     * @inheritdoc
+     */
+    protected function getRepositoryName()
+    {
+        return 'ImvCoreBundle:Word';
+    }
 
     /**
      * Creates a new Word entity.
@@ -32,7 +38,7 @@ class WordController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->getManager();
             $em->persist($entity);
             $em->flush();
 
@@ -92,9 +98,7 @@ class WordController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ImvCoreBundle:Word')->find($id);
+        $entity = $this->getRepository()->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Word entity.');
@@ -117,9 +121,7 @@ class WordController extends Controller
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ImvCoreBundle:Word')->find($id);
+        $entity = $this->getRepository()->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Word entity.');
@@ -163,9 +165,7 @@ class WordController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ImvCoreBundle:Word')->find($id);
+        $entity = $this->getRepository()->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Word entity.');
@@ -176,7 +176,7 @@ class WordController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-            $em->flush();
+            $this->getManager()->flush();
 
             return $this->redirect($this->generateUrl('imv_word_edit', array('id' => $id)));
         }
@@ -199,8 +199,8 @@ class WordController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('ImvCoreBundle:Word')->find($id);
+            $em = $this->getManager();
+            $entity = $this->getRepository()->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Word entity.');

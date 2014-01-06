@@ -2,7 +2,6 @@
 
 namespace Imv\CoreBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -15,13 +14,14 @@ use Imv\CoreBundle\Form\WordListType;
  *
  * @Route("/list")
  */
-class WordListController extends Controller
+class WordListController extends EntityController
 {
-    private function getRepository() {
-        // On récupère le repository
-        return $this->getDoctrine()
-                    ->getManager()
-                    ->getRepository('ImvCoreBundle:WordList');
+    /**
+     * @inheritdoc
+     */
+    protected function getRepositoryName()
+    {
+        return 'ImvCoreBundle:WordList';
     }
 
     /**
@@ -46,8 +46,7 @@ class WordListController extends Controller
      */
     public function showAction($id)
     {
-        $repository = $this->getRepository();
-        $wordlist = $repository->find($id);
+        $wordlist = $this->getRepository()->find($id);
         return array('wordlist' => $wordlist);
     }
 
