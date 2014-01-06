@@ -111,7 +111,7 @@ class WordController extends EntityController
     /**
      * Displays a form to edit an existing Word entity.
      *
-     * @Route("/{id}/edit", name="imv_word_edit")
+     * @Route("/{id}/edit", requirements={"id" = "\d+"}, name="imv_word_edit")
      * @Method("GET")
      * @Template()
      */
@@ -136,7 +136,7 @@ class WordController extends EntityController
     /**
      * Edits an existing Word entity.
      *
-     * @Route("/{id}", name="imv_word_update")
+     * @Route("/{id}", requirements={"id" = "\d+"}, name="imv_word_update")
      * @Method("PUT")
      * @Template("ImvCoreBundle:Word:edit.html.twig")
      */
@@ -168,7 +168,7 @@ class WordController extends EntityController
     /**
      * Deletes a Word entity.
      *
-     * @Route("/{id}", name="imv_word_delete")
+     * @Route("/{id}", requirements={"id" = "\d+"}, name="imv_word_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
