@@ -100,7 +100,7 @@ class WordController extends EntityController
             throw $this->createNotFoundException('Unable to find Word entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($entity);
 
         return array(
             'entity'      => $entity,
@@ -124,7 +124,7 @@ class WordController extends EntityController
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($entity);
 
         return array(
             'entity'      => $entity,
@@ -148,7 +148,7 @@ class WordController extends EntityController
             throw $this->createNotFoundException('Unable to find Word entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
