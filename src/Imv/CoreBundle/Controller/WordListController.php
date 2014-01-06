@@ -25,6 +25,22 @@ class WordListController extends EntityController
     }
 
     /**
+     * @inheritdoc
+     */
+    protected function getRouteNamePrefix()
+    {
+        return 'imv_wordlist';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function getFormType()
+    {
+        return new WordListType();
+    }
+
+    /**
      * Lists all Word entities.
      *
      * @Route("/", name="imv_wordlist")
@@ -96,7 +112,6 @@ class WordListController extends EntityController
 
         return $form;
     }
-
 
     /**
      * Displays a form to create a new Word entity.

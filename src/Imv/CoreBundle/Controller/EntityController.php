@@ -48,4 +48,89 @@ abstract class EntityController extends Controller
      */
     abstract protected function getRepositoryName();
 
+    /**
+     * Returns a Form type for the related entity
+     *
+     * @return \Symfony\Component\Form\AbstractType
+     */
+    abstract protected function getFormType();
+
+    /**
+     * Returns route name's prefix for the related entity
+     * Eg: imv_{entity class name}
+     *
+     * @return string
+     */
+    abstract protected function getRouteNamePrefix();
+
+    /**
+     * Returns the full name of a route for the related entity
+     *
+     * @param string $action
+     *
+     * @return string
+     */
+    protected function getRouteName($action = '')
+    {
+        return $this->getRouteNamePrefix().($action ? '_'.$action : '');
+    }
+
+    /**
+     * Creates a form to create a related entity.
+     *
+     * @param mixed $entity The entity
+     * @param string $string The string to translate
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    protected function createCreateForm($entity, $string='action.entity.create')
+    {
+        $form = $this->createForm($this->getFormType(), $entity, array(
+            'action' => $this->generateUrl($this->getRouteName('show')),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)));
+
+        return $form;
+    }
+
+    /**
+     * Creates a form to edit a related entity.
+     *
+     * @param mixed $entity The entity
+     * @param string $string The string to translate
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    protected function createEditForm($entity, $string='action.entity.update')
+    {
+        $form = $this->createForm($this->getFormType(), $entity, array(
+            'action' => $this->generateUrl($this->getRouteName('update'), array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
+
+        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)));
+
+        return $form;
+    }
+
+    /**
+     * Creates a form to delete a related entity.
+     *
+     * @param mixed $entity The entity
+     * @param string $string The string to translate
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    protected function createDeleteForm($entity, $string='action.entity.delete')
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl($this->getRouteName('delete'), array('id' => $entity->getId())))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)))
+            ->getForm()
+            ;
+    }
+
 } 

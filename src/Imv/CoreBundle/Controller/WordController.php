@@ -25,6 +25,22 @@ class WordController extends EntityController
     }
 
     /**
+     * @inheritdoc
+     */
+    protected function getRouteNamePrefix()
+    {
+        return 'imv_word';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function getFormType()
+    {
+        return new WordType();
+    }
+
+    /**
      * Creates a new Word entity.
      *
      * @Route("/", name="imv_word_create")
@@ -49,26 +65,6 @@ class WordController extends EntityController
             'entity' => $entity,
             'form'   => $form->createView(),
         );
-    }
-
-    /**
-    * Creates a form to create a Word entity.
-    *
-    * @param Word $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createCreateForm(Word $entity)
-    {
-        $translator = $this->get('translator');
-        $form = $this->createForm(new WordType(), $entity, array(
-            'action' => $this->generateUrl('imv_word_create'),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array('label' => $translator->trans('action.entity.create')));
-
-        return $form;
     }
 
     /**
@@ -138,25 +134,6 @@ class WordController extends EntityController
     }
 
     /**
-    * Creates a form to edit a Word entity.
-    *
-    * @param Word $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Word $entity)
-    {
-        $translator = $this->get('translator');
-        $form = $this->createForm(new WordType(), $entity, array(
-            'action' => $this->generateUrl('imv_word_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
-
-        $form->add('submit', 'submit', array('label' => $translator->trans('action.entity.update')));
-
-        return $form;
-    }
-    /**
      * Edits an existing Word entity.
      *
      * @Route("/{id}", name="imv_word_update")
@@ -195,39 +172,16 @@ class WordController extends EntityController
      */
     public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($id);
+        $entity = $this->getRepository()->find($id);
+        $form = $this->createDeleteForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $entity = $this->getRepository()->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Word entity.');
-            }
-
             $em = $this->getManager();
             $em->remove($entity);
             $em->flush();
         }
 
         return $this->redirect($this->generateUrl('imv_wordlist'));
-    }
-
-    /**
-     * Creates a form to delete a Word entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        $translator = $this->get('translator');
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('imv_word_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => $translator->trans('action.entity.delete')))
-            ->getForm()
-        ;
     }
 }
