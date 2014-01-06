@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Translation
 {
+    use Timestampable;
+
     /**
      * @var integer
      *

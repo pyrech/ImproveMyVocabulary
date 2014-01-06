@@ -13,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class WordList
 {
+    use Timestampable;
+
     /**
      * @var integer
      *
@@ -30,13 +32,6 @@ class WordList
     private $count;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="datetime")
-     */
-    private $createdAt;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -51,13 +46,6 @@ class WordList
     private $public;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updated_at", type="datetime")
-     */
-    private $updatedAt;
-
-    /**
      * @ORM\ManyToMany(targetEntity="Imv\CoreBundle\Entity\Word", cascade={"persist"})
      */
     private $words;
@@ -68,9 +56,7 @@ class WordList
      */
     public function __construct() {
       $this->count = 0;
-      $this->createdAt = new \DateTime();
       $this->public = false;
-      $this->updatedAt = new \DateTime();
       $this->words = new ArrayCollection();
     }
 
@@ -92,28 +78,6 @@ class WordList
     public function getCount()
     {
         return $this->count;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     * @return WordList
-     */
-    public function setCreatedAt(\DateTime $createdAt)
-    {
-        $this->createdAt = $createdAt;
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime 
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
     }
 
     /**
@@ -158,28 +122,6 @@ class WordList
     public function isPublic()
     {
         return $this->public;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     * @return WordList
-     */
-    public function setUpdatedAt(\DateTime $updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime 
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
  
     /**
