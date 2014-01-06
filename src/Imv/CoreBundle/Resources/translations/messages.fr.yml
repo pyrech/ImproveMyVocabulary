@@ -24,6 +24,7 @@ title:
         index: Bienvenue sur IMV
     wordlist:
         index: Toutes les listes de mots
+        edit: Modification d'une liste
         show: Liste %name%
         new: Création d'une liste
     word:

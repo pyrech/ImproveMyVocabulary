@@ -62,8 +62,18 @@ class WordListController extends EntityController
      */
     public function showAction($id)
     {
-        $wordlist = $this->getRepository()->find($id);
-        return array('wordlist' => $wordlist);
+        $entity = $this->getRepository()->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Word entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($entity);
+
+        return array(
+            'entity' => $entity,
+            'delete_form' => $deleteForm->createView()
+        );
     }
 
     /**
@@ -109,5 +119,83 @@ class WordListController extends EntityController
             'entity' => $entity,
             'form'   => $form->createView(),
         );
+    }
+
+    /**
+     * Displays a form to edit an existing WordList entity.
+     *
+     * @Route("/{id}/edit", requirements={"id" = "\d+"}, name="imv_wordlist_edit")
+     * @Method("GET")
+     * @Template()
+     */
+    public function editAction($id)
+    {
+        $entity = $this->getRepository()->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find WordList entity.');
+        }
+
+        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($entity);
+
+        return array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        );
+    }
+
+    /**
+     * Edits an existing WordList entity.
+     *
+     * @Route("/{id}", requirements={"id" = "\d+"}, name="imv_wordlist_update")
+     * @Method("PUT")
+     * @Template("ImvCoreBundle:WordList:edit.html.twig")
+     */
+    public function updateAction(Request $request, $id)
+    {
+        $entity = $this->getRepository()->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find WordList entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($entity);
+        $editForm = $this->createEditForm($entity);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isValid()) {
+            $this->getManager()->flush();
+
+            return $this->redirect($this->generateUrl('imv_wordlist_edit', array('id' => $id)));
+        }
+
+        return array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        );
+    }
+
+    /**
+     * Deletes a WordList entity.
+     *
+     * @Route("/{id}", requirements={"id" = "\d+"}, name="imv_wordlist_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $entity = $this->getRepository()->find($id);
+        $form = $this->createDeleteForm($entity);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getManager();
+            $em->remove($entity);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('imv_wordlist'));
     }
 }

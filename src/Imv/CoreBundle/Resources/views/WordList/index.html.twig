@@ -16,6 +16,7 @@
                 <th>{{ 'field.wordlist.count'|trans }}</th>
                 <th>{{ 'field.entity.createdAt'|trans }}</th>
                 <th>{{ 'field.entity.updatedAt'|trans }}</th>
+                <th>{{ 'field.entity.actions'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -33,10 +34,26 @@
                     <td>
                         {{ wl.updatedAt|date(_format_datetime) }}
                     </td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('imv_wordlist_show', { 'id': wl.id }) }}">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    {{ 'action.entity.show'|trans }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('imv_wordlist_edit', { 'id': wl.id }) }}">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    {{ 'action.entity.edit'|trans }}
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td>{{ 'list.wordlist.empty'|trans }}</td>
+                    <td colspan="5">{{ 'list.wordlist.empty'|trans }}</td>
                 </tr>
             {% endfor %}
         </tbody>
