@@ -85,14 +85,12 @@ abstract class EntityController extends Controller
      */
     protected function createCreateForm($entity, $string='action.entity.create')
     {
-        $form = $this->createForm($this->getFormType(), $entity, array(
-            'action' => $this->generateUrl($this->getRouteName('show')),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)));
-
-        return $form;
+        return $this->container->get('form.factory')->createBuilder($this->getFormType(), $entity)
+            ->setAction($this->generateUrl($this->getRouteName('show'), array('id' => $entity->getId())))
+            ->setMethod('POST')
+            ->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)))
+            ->getForm()
+            ;
     }
 
     /**
@@ -105,14 +103,12 @@ abstract class EntityController extends Controller
      */
     protected function createEditForm($entity, $string='action.entity.update')
     {
-        $form = $this->createForm($this->getFormType(), $entity, array(
-            'action' => $this->generateUrl($this->getRouteName('update'), array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
-
-        $form->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)));
-
-        return $form;
+        return $this->container->get('form.factory')->createBuilder($this->getFormType(), $entity)
+            ->setAction($this->generateUrl($this->getRouteName('update'), array('id' => $entity->getId())))
+            ->setMethod('PUT')
+            ->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)))
+            ->getForm()
+            ;
     }
 
     /**
@@ -125,7 +121,7 @@ abstract class EntityController extends Controller
      */
     protected function createDeleteForm($entity, $string='action.entity.delete')
     {
-        return $this->createFormBuilder()
+        return $this->container->get('form.factory')->createBuilder()
             ->setAction($this->generateUrl($this->getRouteName('delete'), array('id' => $entity->getId())))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)))
