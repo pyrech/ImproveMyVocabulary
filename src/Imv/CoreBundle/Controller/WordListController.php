@@ -94,26 +94,6 @@ class WordListController extends EntityController
     }
 
     /**
-     * Creates a form to create a WordList entity.
-     *
-     * @param WordList $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCreateForm(WordList $entity)
-    {
-        $translator = $this->get('translator');
-        $form = $this->createForm(new WordListType(), $entity, array(
-            'action' => $this->generateUrl('imv_wordlist_create'),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array('label' => $translator->trans('action.entity.create')));
-
-        return $form;
-    }
-
-    /**
      * Displays a form to create a new Word entity.
      *
      * @Route("/new", name="imv_wordlist_new")
