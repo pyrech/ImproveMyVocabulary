@@ -86,7 +86,7 @@ class WordController extends Controller
     /**
      * Finds and displays a Word entity.
      *
-     * @Route("/{id}", name="imv_word_show")
+     * @Route("/{id}", requirements={"id": "\d+"}, name="imv_word_show")
      * @Method("GET")
      * @Template()
      */
