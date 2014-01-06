@@ -199,13 +199,13 @@ class WordController extends EntityController
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getManager();
             $entity = $this->getRepository()->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Word entity.');
             }
 
+            $em = $this->getManager();
             $em->remove($entity);
             $em->flush();
         }

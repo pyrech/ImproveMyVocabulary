@@ -8,8 +8,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 abstract class EntityController extends Controller
 {
+    /**
+     * @var string
+     */
     private $repositoryName;
 
+    /**
+     * Initialize the $repositoryName attribute
+     */
     function __construct()
     {
         $this->repositoryName = $this->getRepositoryName();
