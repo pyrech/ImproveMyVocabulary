@@ -61,3 +61,14 @@ field:
         actions: Actions
     word:
         details: Détails
+    wordlist:
+        name: Nom de la liste
+        count: Nombre de mots
+
+list:
+    entity:
+        empty: Aucun élément.
+    word:
+        empty: Aucun mot n'a été ajouté dans cette liste.
+    wordlist:
+        empty: Aucune liste créée.

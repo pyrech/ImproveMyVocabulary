@@ -12,8 +12,8 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Nom de la liste</th>
-                <th>Nombre de mots</th>
+                <th>{{ 'field.wordlist.name'|trans }}</th>
+                <th>{{ 'field.wordlist.count'|trans }}</th>
                 <th>{{ 'field.entity.createdAt'|trans }}</th>
                 <th>{{ 'field.entity.updatedAt'|trans }}</th>
             </tr>
@@ -36,7 +36,7 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td>Currently not any lists added.</td>
+                    <td>{{ 'list.wordlist.empty'|trans }}</td>
                 </tr>
             {% endfor %}
         </tbody>
