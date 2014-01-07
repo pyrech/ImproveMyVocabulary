@@ -109,7 +109,7 @@ class Translation implements EntityInterface
      *
      * @return Translation
      */
-    public function setWord($word, $cascade=true)
+    public function setWord(Word $word, $cascade=true)
     {
         $this->word = $word;
         if ($cascade) {
