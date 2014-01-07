@@ -3,6 +3,7 @@
 namespace Imv\CoreBundle\Controller;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Imv\CoreBundle\Entity\EntityInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
@@ -78,12 +79,12 @@ abstract class EntityController extends Controller
     /**
      * Creates a form to create a related entity.
      *
-     * @param mixed $entity The entity
+     * @param EntityInterface $entity The entity
      * @param string $string The string to translate
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    protected function createCreateForm($entity, $string='action.entity.create')
+    protected function createCreateForm(EntityInterface $entity, $string='action.entity.create')
     {
         return $this->container->get('form.factory')->createBuilder($this->getFormType(), $entity)
             ->setAction($this->generateUrl($this->getRouteName('show'), array('id' => $entity->getId())))
@@ -96,12 +97,12 @@ abstract class EntityController extends Controller
     /**
      * Creates a form to edit a related entity.
      *
-     * @param mixed $entity The entity
+     * @param EntityInterface $entity The entity
      * @param string $string The string to translate
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    protected function createEditForm($entity, $string='action.entity.update')
+    protected function createEditForm(EntityInterface $entity, $string='action.entity.update')
     {
         return $this->container->get('form.factory')->createBuilder($this->getFormType(), $entity)
             ->setAction($this->generateUrl($this->getRouteName('update'), array('id' => $entity->getId())))
@@ -114,12 +115,12 @@ abstract class EntityController extends Controller
     /**
      * Creates a form to delete a related entity.
      *
-     * @param mixed $entity The entity
+     * @param EntityInterface $entity The entity
      * @param string $string The string to translate
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    protected function createDeleteForm($entity, $string='action.entity.delete')
+    protected function createDeleteForm(EntityInterface $entity, $string='action.entity.delete')
     {
         return $this->container->get('form.factory')->createBuilder()
             ->setAction($this->generateUrl($this->getRouteName('delete'), array('id' => $entity->getId())))

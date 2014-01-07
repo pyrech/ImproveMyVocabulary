@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="word")
  * @ORM\Entity(repositoryClass="Imv\CoreBundle\Entity\WordRepository")
  */
-class Word
+class Word implements EntityInterface
 {
     use Timestampable;
 
@@ -45,9 +45,7 @@ class Word
     }
 
     /**
-     * Get id
-     *
-     * @return integer 
+     * @inheritdoc
      */
     public function getId()
     {

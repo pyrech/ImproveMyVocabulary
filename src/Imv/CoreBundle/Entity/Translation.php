@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Translation
+class Translation implements EntityInterface
 {
     use Timestampable;
 
@@ -46,9 +46,7 @@ class Translation
     protected $word;
 
     /**
-     * Get id
-     *
-     * @return integer 
+     * @inheritdoc
      */
     public function getId()
     {

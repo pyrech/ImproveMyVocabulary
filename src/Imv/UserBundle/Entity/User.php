@@ -4,6 +4,7 @@ namespace Imv\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Imv\CoreBundle\Entity\EntityInterface;
 
 /**
  * User
@@ -11,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class User extends BaseUser
+class User extends BaseUser implements EntityInterface
 {
     /**
      * @var integer

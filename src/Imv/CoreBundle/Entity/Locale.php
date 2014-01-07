@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Imv\CoreBundle\Entity\LocaleRepository")
  */
-class Locale
+class Locale implements EntityInterface
 {
     /**
      * @var integer
@@ -35,11 +35,8 @@ class Locale
      */
     private $name;
 
-
     /**
-     * Get id
-     *
-     * @return integer 
+     * @inheritdoc
      */
     public function getId()
     {
