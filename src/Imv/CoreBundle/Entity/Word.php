@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="word")
  * @ORM\Entity(repositoryClass="Imv\CoreBundle\Entity\WordRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Word implements EntityInterface
 {
@@ -36,6 +37,13 @@ class Word implements EntityInterface
      * @ORM\OneToMany(targetEntity="Imv\CoreBundle\Entity\Translation", mappedBy="word", cascade={"persist", "remove"})
      */
     private $translations;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Imv\CoreBundle\Entity\WordList", mappedBy="words", cascade={"persist"})
+     */
+    private $wordlists;
 
     /**
      * Constructor
@@ -79,13 +87,16 @@ class Word implements EntityInterface
      * Add a translation
      *
      * @param Translation $translation
+     * @param boolean $cascade
      *
      * @return Word
      */
-    public function addTranslation(Translation $translation)
+    public function addTranslation(Translation $translation, $cascade=true)
     {
         $this->translations[] = $translation;
-        $translation->setWord($this);
+        if ($cascade) {
+            $translation->setWord($this, false);
+        }
         return $this;
     }
 
@@ -93,12 +104,16 @@ class Word implements EntityInterface
      * Remove a translation
      *
      * @param Translation $translation
+     * @param boolean $cascade
      *
      * @return Word
      */
-    public function removeTranslation(Translation $translation)
+    public function removeTranslation(Translation $translation, $cascade=true)
     {
         $this->translations->removeElement($translation);
+        if ($cascade) {
+            $translation->removeWord($this, false);
+        }
     }
 
     /**
@@ -124,6 +139,46 @@ class Word implements EntityInterface
             if ($translation->getLocale() == $locale) {
                 return $translation;
             }
+        }
+    }
+
+    /**
+     * Add wordList
+     *
+     * @param WordList $wordlist
+     * @param boolean $cascade
+     */
+    public function addWordList(WordList $wordlist, $cascade=true)
+    {
+        $this->wordlists[] = $wordlist;
+        if ($cascade) {
+            $wordlist->addWord($this, false);
+        }
+    }
+
+    /**
+     * Remove wordlist
+     *
+     * @param WordList $wordlist
+     * @param boolean $cascade
+     */
+    public function removeWordList(WordList $wordlist, $cascade=true)
+    {
+        $this->wordlists->removeElement($wordlist);
+        if ($cascade) {
+            $wordlist->removeWord($this, false);
+        }
+    }
+
+    /**
+     * Do stuff when a word is removed
+     *
+     * @ORM\PreRemove
+     */
+    public function onPreRemove()
+    {
+        foreach($this->wordlists as $wordlist) {
+            $this->removeWordList($wordlist);
         }
     }
 }

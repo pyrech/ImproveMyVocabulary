@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Translation implements EntityInterface
 {
@@ -43,7 +44,7 @@ class Translation implements EntityInterface
      * @ORM\ManyToOne(targetEntity="Imv\CoreBundle\Entity\Word", inversedBy="translations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-    protected $word;
+    private $word;
 
     /**
      * @inheritdoc
@@ -104,12 +105,35 @@ class Translation implements EntityInterface
      * Set word
      *
      * @param Word $word
+     * @param boolean $cascade
      *
      * @return Translation
      */
-    public function setWord($word)
+    public function setWord($word, $cascade=true)
     {
         $this->word = $word;
+        if ($cascade) {
+            $word->addTranslation($this, false);
+        }
+        return $this;
+    }
+
+    /**
+     * Unset word
+     *
+     * @param boolean $cascade
+     *
+     * @return Translation
+     */
+    public function removeWord($cascade=true)
+    {
+        $word = $this->word;
+        if ($word) {
+            $this->word = null;
+            if ($cascade) {
+                $word->removeTranslation($this, false);
+            }
+        }
         return $this;
     }
 
@@ -121,5 +145,15 @@ class Translation implements EntityInterface
     public function getWord()
     {
         return $this->word;
+    }
+
+    /**
+     * Do stuff when a translation is removed
+     *
+     * @ORM\PreRemove
+     */
+    public function onPreRemove()
+    {
+        $this->removeWord();
     }
 }

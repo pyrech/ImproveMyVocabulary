@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="wordlist")
  * @ORM\Entity(repositoryClass="Imv\CoreBundle\Entity\WordListRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class WordList implements EntityInterface
 {
@@ -48,7 +49,7 @@ class WordList implements EntityInterface
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Imv\CoreBundle\Entity\Word", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Imv\CoreBundle\Entity\Word", inversedBy="wordlists", cascade={"persist"})
      */
     private $words;
 
@@ -58,9 +59,9 @@ class WordList implements EntityInterface
      */
     public function __construct()
     {
-      $this->count = 0;
-      $this->public = false;
-      $this->words = new ArrayCollection();
+        $this->count = 0;
+        $this->public = false;
+        $this->words = new ArrayCollection();
     }
 
     /**
@@ -131,22 +132,30 @@ class WordList implements EntityInterface
       * Add word
       *
       * @param Word $word
+      * @param boolean $cascade
       */
-    public function addWord(Word $word)
+    public function addWord(Word $word, $cascade=true)
     {
-        $this->words[] = $word;
         $this->count++;
+        $this->words[] = $word;
+        if ($cascade) {
+            $word->addWordList($this, false);
+        }
     }
    
     /**
       * Remove word
       *
       * @param Word $word
+      * @param boolean $cascade
       */
-    public function removeWord(Word $word)
+    public function removeWord(Word $word, $cascade=true)
     {
-        $this->words->removeElement($word);
         $this->count--;
+        $this->words->removeElement($word);
+        if ($cascade) {
+            $word->removeWordList($this, false);
+        }
     }
    
     /**
@@ -157,5 +166,17 @@ class WordList implements EntityInterface
     public function getWords()
     {
         return $this->words;
+    }
+
+    /**
+     * Do stuff when a wordlist is removed
+     *
+     * @ORM\PreRemove
+     */
+    public function onPreRemove()
+    {
+        foreach($this->words as $word) {
+            $this->removeWord($word);
+        }
     }
 }
