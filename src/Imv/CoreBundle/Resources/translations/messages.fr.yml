@@ -40,6 +40,9 @@ content:
                          <em>Improve My Vocabulary</em> vous permet d'améliorer VOTRE vocabulaire dans une langue étrangère.
                          Votre professeur vous demande de réviser une liste de mot pour un contrôle ? Vous avez du mal à apprendre et retenir du vocabulaire ? IMV est fait pour vous !
             try: Essayer
+    word:
+        associated:
+            wordlist: '{0}Aucune liste associée à ce mot.|{1}Ce mot est associé à la liste %text%.|[2, Inf]Ce mot est associé aux listes %text%.'
 
 action:
     entity:

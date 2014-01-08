@@ -4,10 +4,20 @@
 
 {% set _format_datetime = 'format.datetime'|trans %}
 
+
 {% block body -%}
+    {% set wordlist_links %}
+        {% for wl in entity.wordlists %}
+        <a href="{{ path('imv_wordlist_show', wl.urlParams) }}">{{ wl.name }}</a>{% if not loop.last %}, {% endif %}
+        {% endfor %}
+    {% endset %}
     <div class="page-header">
         <h1>{{ 'title.word.show'|trans }}</h1>
     </div>
+
+    <p>
+        {{ 'content.word.associated.wordlist'|transchoice(entity.wordlists.count, {'%text%': wordlist_links|trim})|raw }}
+    </p>
 
     <table class="record_properties">
         <tbody>
