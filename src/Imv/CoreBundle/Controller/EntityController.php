@@ -87,7 +87,7 @@ abstract class EntityController extends Controller
     protected function createCreateForm(EntityInterface $entity, $string='action.entity.create')
     {
         return $this->container->get('form.factory')->createBuilder($this->getFormType(), $entity)
-            ->setAction($this->generateUrl($this->getRouteName('show'), array('id' => $entity->getId())))
+            ->setAction($this->generateUrl($this->getRouteName('show'), $entity->getUrlParams()))
             ->setMethod('POST')
             ->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)))
             ->getForm()
@@ -105,7 +105,7 @@ abstract class EntityController extends Controller
     protected function createEditForm(EntityInterface $entity, $string='action.entity.update')
     {
         return $this->container->get('form.factory')->createBuilder($this->getFormType(), $entity)
-            ->setAction($this->generateUrl($this->getRouteName('update'), array('id' => $entity->getId())))
+            ->setAction($this->generateUrl($this->getRouteName('update'), $entity->getUrlParams()))
             ->setMethod('PUT')
             ->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)))
             ->getForm()
@@ -123,7 +123,7 @@ abstract class EntityController extends Controller
     protected function createDeleteForm(EntityInterface $entity, $string='action.entity.delete')
     {
         return $this->container->get('form.factory')->createBuilder()
-            ->setAction($this->generateUrl($this->getRouteName('delete'), array('id' => $entity->getId())))
+            ->setAction($this->generateUrl($this->getRouteName('delete'), $entity->getUrlParams()))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)))
             ->getForm()

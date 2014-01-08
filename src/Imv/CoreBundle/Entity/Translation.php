@@ -55,6 +55,16 @@ class Translation implements EntityInterface
     }
 
     /**
+     * @inheritdoc
+     *
+     * @throws Exception This entity cannot be used in url
+     */
+    public function getUrlParams()
+    {
+        throw new \Exception('Unsupported operation');
+    }
+
+    /**
      * Set term
      *
      * @param string $term

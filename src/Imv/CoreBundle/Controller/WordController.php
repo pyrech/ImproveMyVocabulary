@@ -58,7 +58,7 @@ class WordController extends EntityController
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('imv_word_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('imv_word_show', $entity->getUrlParams()));
         }
 
         return array(
@@ -137,7 +137,7 @@ class WordController extends EntityController
         if ($editForm->isValid()) {
             $this->getManager()->flush();
 
-            return $this->redirect($this->generateUrl('imv_word_edit', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('imv_word_edit', $entity->getUrlParams()));
         }
 
         return array(

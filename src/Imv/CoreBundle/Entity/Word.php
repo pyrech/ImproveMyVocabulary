@@ -61,6 +61,14 @@ class Word implements EntityInterface
     }
 
     /**
+     * @inheritdoc
+     */
+    public function getUrlParams()
+    {
+        return array('id' => $this->getId());
+    }
+
+    /**
      * Set details
      *
      * @param string $details

@@ -22,4 +22,20 @@ class User extends BaseUser implements EntityInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @inheritdoc
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getUrlParams()
+    {
+        return array('id' => $this->getId());
+    }
 }

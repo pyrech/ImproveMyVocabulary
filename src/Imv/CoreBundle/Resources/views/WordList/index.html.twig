@@ -23,7 +23,7 @@
             {% for wl in wordlists %}
                 <tr>
                     <td>
-                        <a href="{{ path('imv_wordlist_show', {'id': wl.id}) }}">{{ wl.name }}</a>
+                        <a href="{{ path('imv_wordlist_show', wl.urlParams) }}">{{ wl.name }}</a>
                     </td>
                     <td>
                         {{ wl.count }}
@@ -37,13 +37,13 @@
                     <td>
                         <ul>
                             <li>
-                                <a href="{{ path('imv_wordlist_show', { 'id': wl.id }) }}">
+                                <a href="{{ path('imv_wordlist_show', wl.urlParams) }}">
                                     <span class="glyphicon glyphicon-eye-open"></span>
                                     {{ 'action.entity.show'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('imv_wordlist_edit', { 'id': wl.id }) }}">
+                                <a href="{{ path('imv_wordlist_edit', wl.urlParams) }}">
                                     <span class="glyphicon glyphicon-edit"></span>
                                     {{ 'action.entity.edit'|trans }}
                                 </a>

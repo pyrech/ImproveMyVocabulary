@@ -73,6 +73,14 @@ class WordList implements EntityInterface
     }
 
     /**
+     * @inheritdoc
+     */
+    public function getUrlParams()
+    {
+        return array('id' => $this->getId());
+    }
+
+    /**
      * Get the number of words added
      *
      * @return integer
