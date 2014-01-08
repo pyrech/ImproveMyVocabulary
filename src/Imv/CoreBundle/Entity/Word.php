@@ -179,6 +179,16 @@ class Word implements EntityInterface
     }
 
     /**
+     * Get wordlists
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWordlists()
+    {
+        return $this->wordlists;
+    }
+
+    /**
      * Do stuff when a word is removed
      *
      * @ORM\PreRemove
