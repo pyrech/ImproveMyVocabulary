@@ -4,39 +4,41 @@
 
 {% set _format_datetime = 'format.datetime'|trans %}
 
+{% set wordlist_links %}
+    {% for wl in entity.wordlists %}
+        <a href="{{ path('imv_wordlist_show', wl.urlParams) }}">{{ wl.name }}</a>{% if not loop.last %}, {% endif %}
+    {% endfor %}
+{% endset %}
 
 {% block body -%}
-    {% set wordlist_links %}
-        {% for wl in entity.wordlists %}
-        <a href="{{ path('imv_wordlist_show', wl.urlParams) }}">{{ wl.name }}</a>{% if not loop.last %}, {% endif %}
-        {% endfor %}
-    {% endset %}
     <div class="page-header">
         <h1>{{ 'title.word.show'|trans }}</h1>
     </div>
 
     <p>
-        {{ 'content.word.associated.wordlist'|transchoice(entity.wordlists.count, {'%text%': wordlist_links|trim})|raw }}
+        {% filter replace({'%text%': wordlist_links|trim})|raw %}
+            {{ 'content.word.associated.wordlist'|transchoice(entity.wordlists.count) }}
+        {% endfilter %}
     </p>
 
     <table class="record_properties">
         <tbody>
-            <tr>
-                <th>{{ 'field.entity.id'|trans }}</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'field.entity.createdAt'|trans }}</th>
-                <td>{{ entity.createdAt|date(_format_datetime) }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'field.word.details'|trans }}</th>
-                <td>{{ entity.details }}</td>
-            </tr>
-            <tr>
-                <th>{{ 'field.entity.updatedAt'|trans }}</th>
-                <td>{{ entity.updatedAt|date(_format_datetime) }}</td>
-            </tr>
+        <tr>
+            <th>{{ 'field.entity.id'|trans }}</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'field.entity.createdAt'|trans }}</th>
+            <td>{{ entity.createdAt|date(_format_datetime) }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'field.word.details'|trans }}</th>
+            <td>{{ entity.details }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'field.entity.updatedAt'|trans }}</th>
+            <td>{{ entity.updatedAt|date(_format_datetime) }}</td>
+        </tr>
         </tbody>
     </table>
 
