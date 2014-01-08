@@ -92,14 +92,8 @@ class WordController extends EntityController
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
+    public function showAction(Word $entity)
     {
-        $entity = $this->getRepository()->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Word entity.');
-        }
-
         $deleteForm = $this->createDeleteForm($entity);
 
         return array(
@@ -115,14 +109,8 @@ class WordController extends EntityController
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction(Word $entity)
     {
-        $entity = $this->getRepository()->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Word entity.');
-        }
-
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($entity);
 
@@ -140,14 +128,8 @@ class WordController extends EntityController
      * @Method("PUT")
      * @Template("ImvCoreBundle:Word:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, Word $entity)
     {
-        $entity = $this->getRepository()->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Word entity.');
-        }
-
         $deleteForm = $this->createDeleteForm($entity);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
@@ -155,7 +137,7 @@ class WordController extends EntityController
         if ($editForm->isValid()) {
             $this->getManager()->flush();
 
-            return $this->redirect($this->generateUrl('imv_word_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('imv_word_edit', array('id' => $entity->getId())));
         }
 
         return array(
@@ -171,9 +153,8 @@ class WordController extends EntityController
      * @Route("/{id}", requirements={"id" = "\d+"}, name="imv_word_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, Word $entity)
     {
-        $entity = $this->getRepository()->find($id);
         $form = $this->createDeleteForm($entity);
         $form->handleRequest($request);
 
