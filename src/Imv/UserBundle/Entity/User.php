@@ -9,7 +9,7 @@ use Imv\CoreBundle\Entity\EntityInterface;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table()
  * @ORM\Entity
  */
 class User extends BaseUser implements EntityInterface

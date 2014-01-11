@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Word
  *
- * @ORM\Table(name="word")
+ * @ORM\Table()
  * @ORM\Entity(repositoryClass="Imv\CoreBundle\Entity\WordRepository")
  * @ORM\HasLifecycleCallbacks
  */

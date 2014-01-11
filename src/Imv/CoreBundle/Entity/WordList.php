@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * WordList
  *
- * @ORM\Table(name="wordlist")
+ * @ORM\Table()
  * @ORM\Entity(repositoryClass="Imv\CoreBundle\Entity\WordListRepository")
  * @ORM\HasLifecycleCallbacks
  */
