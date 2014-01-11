@@ -29,7 +29,7 @@ class WordListControllerTest extends WebTestCase
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('imv_corebundle_wordlist_submit')->form(array(
-            'imv_corebundle_wordlisttype[name]'  => $newName
+            'imv_corebundle_wordlist[name]'  => $newName
         ));
 
         $client->submit($form);
@@ -42,7 +42,7 @@ class WordListControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('imv_corebundle_wordlist_submit')->form(array(
-            'imv_corebundle_wordtype[name]'  => $editName
+            'imv_corebundle_wordlist[name]'  => $editName
         ));
 
         $client->submit($form);
