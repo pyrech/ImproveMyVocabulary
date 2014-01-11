@@ -87,7 +87,7 @@ abstract class EntityController extends Controller
     protected function createCreateForm(EntityInterface $entity, $string='action.entity.create')
     {
         return $this->container->get('form.factory')->createBuilder($this->getFormType(), $entity)
-            ->setAction($this->generateUrl($this->getRouteName('show'), $entity->getUrlParams()))
+            ->setAction($this->generateUrl($this->getRouteName('create'), $entity->getUrlParams()))
             ->setMethod('POST')
             ->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)))
             ->getForm()
