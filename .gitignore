@@ -18,6 +18,7 @@ app/config/parameters.ini
 app/config/parameters.yml
 
 # Custom
+*.log
 doc/*
 .idea*
 sftp*
