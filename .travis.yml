@@ -5,6 +5,9 @@ php:
     - 5.5
 
 before_script:
+    - mysql -e "create database IF NOT EXISTS imv_test;"
+    - echo -e "parameters:\n    database_driver:   pdo_mysql\n    database_host:     127.0.0.1\n    database_port:     ~\n    database_name:     imv_test\n    database_user:     travis\n    database_password: ~\n\n    mailer_transport:  smtp\n    mailer_host:       127.0.0.1\n    mailer_user:       ~\n    mailer_password:   ~\n\n    locale:            en\n    secret:            ThisTokenIsNotSoSecretSoYouShouldChangeIt\n\n    session_name:      IMVSESSION\n" > app/config/parameters.yml
     - COMPOSER_ROOT_VERSION=dev-master composer --prefer-source --dev install
+    - app/console doctrine:schema:update
 
 script: phpunit -c app
