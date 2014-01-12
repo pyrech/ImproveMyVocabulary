@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class WordListControllerTest extends WebTestCase
 {
-    public function testCrudScenario()
+    public function testCompleteScenario()
     {
         $client = static::createClient();
 
@@ -22,7 +22,7 @@ class WordListControllerTest extends WebTestCase
 
         // Check new request's status code
         $crawler = $client->click($crawler->filter('.btn-new')->link());
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET new page");
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for new page");
 
         // Fill in the form and submit it
         $form = $crawler->filter('.btn-create')->form(array(
@@ -33,14 +33,14 @@ class WordListControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         // Check show request's status code
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET show page");
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for show page");
 
         // Check data in the show view
         $this->assertEquals(0, $crawler->filter('h1:contains("'.$newName.'")')->count(), 'Missing element h1:contains("'.$newName.'")');
 
         // Check edit request's status code
         $crawler = $client->click($crawler->filter('.btn-edit')->link());
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET edit page");
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for edit page");
 
         $form = $crawler->filter('.btn-update')->form(array(
             'imv_corebundle_wordlist[name]'  => $editName
@@ -50,7 +50,7 @@ class WordListControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         // Check edit request's status code
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET edit page");
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for edit page");
 
         // Check the element contains an attribute with value equals to $editName
         $this->assertEquals(1, $crawler->filter('[value="'.$editName.'"]')->count(), 'Missing element [value="'.$editName.'"]');
