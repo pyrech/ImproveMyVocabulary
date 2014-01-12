@@ -59,11 +59,8 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('imv_wordlist_new') }}">
-                {{ 'action.wordlist.add'|trans }}
-            </a>
-        </li>
-    </ul>
+    <a class="btn btn-primary btn-new" href="{{ path('imv_wordlist_new') }}">
+         {{ 'action.wordlist.add'|trans }}
+    </a>
+
 {% endblock %}

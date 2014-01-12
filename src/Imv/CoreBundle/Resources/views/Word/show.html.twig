@@ -42,12 +42,19 @@
         </tbody>
     </table>
 
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('imv_word_edit', entity.urlParams) }}">
+    <div class="row form-group">
+        <div class="col-sm-offset-2 col-sm-10 ">
+            <a class="btn btn-primary btn-edit" href="{{ path('imv_word_edit', { entity.urlParams }) }}">
                 {{ 'action.entity.edit'|trans }}
             </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
+        </div>
+    </div>
+
+    {{ form_start(delete_form) }}
+        {{ form_errors(delete_form) }}
+
+        {{ form_row(delete_form.submit, {'attr': {'class': 'btn-danger btn-delete'}}) }}
+    {{ form_end(delete_form) }}
+
+
 {% endblock %}

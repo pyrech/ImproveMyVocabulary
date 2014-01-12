@@ -7,8 +7,14 @@
         <h1>{{ 'title.wordlist.new'|trans }}</h1>
     </div>
 
-    {{ form(form) }}
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
 
-    <ul class="record_actions">
-    </ul>
+        {{ form_row(form.name, {'label': 'field.wordlist.name'|trans}) }}
+
+        {{ form_row(form.submit, {'attr': {'class': 'btn-primary btn-create'}}) }}
+
+        {{ form_rest(form) }}
+    {{ form_end(form) }}
+
 {% endblock %}
