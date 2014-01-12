@@ -10,11 +10,7 @@
     {{ form_start(edit_form) }}
         {{ form_errors(edit_form) }}
 
-        <div>
-            {{ form_label(edit_form.details, 'field.word.details'|trans) }}
-            {{ form_errors(edit_form.details) }}
-            {{ form_widget(edit_form.details) }}
-        </div>
+        {{ form_row(edit_form.details, {'label': 'field.word.details'|trans}) }}
 
         <ul class="translations" data-prototype="{{ form_widget(edit_form.translations.vars.prototype)|e }}">
             {% for translation in edit_form.translations %}
@@ -26,16 +22,14 @@
             {% endfor %}
         </ul>
 
-        {# Génération des champs pas encore écrits.
-           Dans cet exemple, ce serait « date », « auteur » et « publication »,
-           mais aussi le champ CSRF (géré automatiquement par Symfony !)
-           et tous les champs cachés (type « hidden »). #}
         {{ form_rest(edit_form) }}
     {{ form_end(edit_form) }}
 
-    <ul class="record_actions">
-        <li>{{ form(delete_form) }}</li>
-    </ul>
+    {{ form_start(delete_form) }}
+        {{ form_errors(delete_form) }}
+
+        {{ form_row(delete_form.submit, {'attr': {'class': 'btn-danger btn-delete'}}) }}
+    {{ form_end(delete_form) }}
 {% endblock %}
 
 {% block javascripts %}

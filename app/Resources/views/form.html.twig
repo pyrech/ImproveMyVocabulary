@@ -1,0 +1,92 @@
+{% extends "form_div_layout.html.twig" %}
+
+{% block form_start %}
+    {% set form_class = 'form-' ~ form_type|default('horizontal') %}
+    {% if attr is defined %}
+        {% if 'class' in attr %}
+            {% set attr = attr|merge({'class' : form_class ~ ' ' ~ attr.class}) %}
+        {% else %}
+            {% set attr = attr|merge({'class' : form_class}) %}
+        {% endif %}
+    {% else %}
+        {% set attr = {'class' : form_class} %}
+    {% endif %}
+    {{ parent() }}
+{% endblock form_start %}
+
+{% block form_row %}
+    {% spaceless %}
+        <div class="form-group {{ errors|length > 0 ? 'error' : '' }}">
+            {{ form_label(form) }}
+            <div class="controls col-sm-10">
+                {{ form_widget(form) }}
+                {{ form_errors(form) }}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock form_row %}
+
+{% block button_row %}
+    {% spaceless %}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                {{ form_widget(form) }}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock button_row %}
+
+{% block form_label %}
+    {% if label_attr is defined %}
+        {% if attr.class is defined %}
+            {% set label_attr = label_attr|merge({'class' : 'col-sm-2 control-label ' ~ label_attr.class}) %}
+        {% else %}
+            {% set label_attr = label_attr|merge({'class' : 'col-sm-2 control-label'}) %}
+        {% endif %}
+    {% else %}
+        {% set label_attr = {'class' : 'col-sm-2 control-label'} %}
+    {% endif %}
+    {{ parent() }}
+{% endblock form_label %}
+
+{% block widget_attributes %}
+    {% if attr is defined %}
+        {% if attr.class is defined %}
+            {% set attr = attr|merge({'class' : 'form-control ' ~ attr.class}) %}
+        {% else %}
+            {% set attr = attr|merge({'class' : 'form-control'}) %}
+        {% endif %}
+    {% else %}
+        {% set attr = {'class' : 'form-control'} %}
+    {% endif %}
+    {{ parent() }}
+{% endblock widget_attributes %}
+
+{% block button_attributes %}
+    {% if attr is defined %}
+        {% if attr.class is defined %}
+            {% set attr = attr|merge({'class' : 'btn ' ~ attr.class}) %}
+        {% else %}
+            {% set attr = attr|merge({'class' : 'btn btn-primary'}) %}
+        {% endif %}
+    {% else %}
+        {% set attr = {'class' : 'btn btn-primary'} %}
+    {% endif %}
+    {{ parent() }}
+{% endblock button_attributes %}
+
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            <span class="help-inline">
+                {% for error in errors %}
+                    {{
+                    error.messagePluralization is null
+                    ? error.messageTemplate|trans(error.messageParameters, 'validators')
+                    : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
+                    }}
+                {% endfor %}
+            </span>
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_errors %}

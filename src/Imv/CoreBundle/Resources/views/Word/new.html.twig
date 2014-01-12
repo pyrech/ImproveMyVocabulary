@@ -7,7 +7,13 @@
         <h1>{{ 'title.word.new'|trans }}</h1>
     </div>
 
-    {{ form(form) }}
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.details, {'label': 'field.word.details'|trans}) }}
+
+        {{ form_rest(form) }}
+    {{ form_end(form) }}
 
     <ul class="record_actions">
     </ul>

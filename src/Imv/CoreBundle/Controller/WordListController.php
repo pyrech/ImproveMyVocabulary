@@ -54,6 +54,24 @@ class WordListController extends EntityController
     }
 
     /**
+     * Displays a form to create a new Word entity.
+     *
+     * @Route("/new", name="imv_wordlist_new")
+     * @Method("GET")
+     * @Template()
+     */
+    public function newAction()
+    {
+        $entity = new WordList();
+        $form   = $this->createCreateForm($entity);
+
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        );
+    }
+
+    /**
      * Finds and displays a WordList entity and its attached words.
      *
      * @Route("/{id}", requirements={"id" = "\d+"}, name="imv_wordlist_show")
@@ -90,24 +108,6 @@ class WordListController extends EntityController
 
             return $this->redirect($this->generateUrl('imv_wordlist_show', $entity->getUrlParams()));
         }
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
-
-    /**
-     * Displays a form to create a new Word entity.
-     *
-     * @Route("/new", name="imv_wordlist_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new WordList();
-        $form   = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
