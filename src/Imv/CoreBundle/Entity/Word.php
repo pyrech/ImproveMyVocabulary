@@ -50,6 +50,7 @@ class Word implements EntityInterface
      */
     public function __construct()
     {
+        $this->wordlists = new ArrayCollection();
     }
 
     /**
