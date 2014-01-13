@@ -25,6 +25,7 @@ abstract class AbstractTestEntity extends WebTestCase
     protected function setUp()
     {
         $kernel = static::createKernel();
+        $kernel->boot();
         $this->_em = $kernel->getContainer()->get('doctrine.orm.entity_manager');
         $this->_em->beginTransaction();
         $this->repositoryName = $this->getRepositoryName();
