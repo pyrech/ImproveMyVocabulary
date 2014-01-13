@@ -119,7 +119,7 @@ class WordTest extends AbstractTestEntity
         // Test the number of wordlist associated
         $this->assertEquals(1, $entity->getWordlists()->count(), 'Invalid number of wordlist');
 
-        $this->_em->delete($wordlist);
+        $this->_em->remove($wordlist);
         $this->_em->flush();
 
         // Test the number of wordlist associated
@@ -212,7 +212,7 @@ class WordTest extends AbstractTestEntity
         // Test the number of translation associated
         $this->assertEquals(1, $entity->getTranslations()->count(), 'Invalid number of translation');
 
-        $this->_em->delete($translation);
+        $this->_em->remove($translation);
         $this->_em->flush();
 
         // Test the number of translation associated

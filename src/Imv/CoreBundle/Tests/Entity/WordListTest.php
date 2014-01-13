@@ -120,7 +120,7 @@ class WordListTest extends AbstractTestEntity
         // Test the number of word associated
         $this->assertEquals(1, $entity->getCount(), 'Invalid wordlist count');
 
-        $this->_em->delete($word);
+        $this->_em->remove($word);
         $this->_em->flush();
 
         // Test the number of word associated
