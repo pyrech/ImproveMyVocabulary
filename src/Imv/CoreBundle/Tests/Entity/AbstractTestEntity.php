@@ -1,5 +1,7 @@
 <?php
 
+namespace Imv\CoreBundle\Tests\Entity;
+
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Imv\CoreBundle\Entity\EntityInterface;

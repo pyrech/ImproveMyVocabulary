@@ -1,5 +1,7 @@
 <?php
 
+namespace Imv\CoreBundle\Tests\Entity;
+
 use Imv\CoreBundle\Entity\Translation;
 use Imv\CoreBundle\Entity\Word;
 use Imv\CoreBundle\Entity\WordList;

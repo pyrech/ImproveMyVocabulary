@@ -28,7 +28,6 @@ class WordListControllerTest extends WebTestCase
         $form = $crawler->filter('.btn-create')->form(array(
             'imv_corebundle_wordlist[name]'  => $newName
         ));
-
         $client->submit($form);
         $crawler = $client->followRedirect();
 
@@ -42,10 +41,10 @@ class WordListControllerTest extends WebTestCase
         $crawler = $client->click($crawler->filter('.btn-edit')->link());
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for edit page");
 
+        // Fill in the form and submit it
         $form = $crawler->filter('.btn-update')->form(array(
             'imv_corebundle_wordlist[name]'  => $editName
         ));
-
         $client->submit($form);
         $crawler = $client->followRedirect();
 

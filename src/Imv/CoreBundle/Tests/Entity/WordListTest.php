@@ -1,5 +1,7 @@
 <?php
 
+namespace Imv\CoreBundle\Tests\Entity;
+
 use Imv\CoreBundle\Entity\Word;
 use Imv\CoreBundle\Entity\WordList;
 
@@ -112,8 +114,6 @@ class WordListTest extends AbstractTestEntity
         $entity = new WordList();
 
         $word = new Word();
-        $wordDetails = $this->getUniqueString();
-        $word->setDetails($wordDetails);
         $entity->addWord($word);
         $this->_em->flush();
 
