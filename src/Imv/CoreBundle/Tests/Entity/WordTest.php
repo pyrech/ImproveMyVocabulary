@@ -184,8 +184,10 @@ class WordTest extends AbstractTestEntity
         $this->assertTrue($found, 'New translation added not found');
     }
 
-    public function testRemoveTranslation()
+    public function testRemoveTranslationThrowException()
     {
+        $this->setExpectedException('\\Doctrine\\DBAL\\DBALException');
+
         $entity = new Word();
         $entity->setDetails($this->getUniqueString());
         $this->_em->persist($entity);
@@ -200,22 +202,7 @@ class WordTest extends AbstractTestEntity
         $this->assertEquals(1, $entity->getTranslations()->count(), 'Invalid number of translation');
 
         $entity->removeTranslation($translation);
-        $this->_em->flush();
-
-        // Reload the entity
-        //$entity = $this->findEntity($entity->getId());
-
-        // Test the number of word associated
-        $this->assertEquals(0, $entity->getTranslations()->count(), 'Invalid number of translation');
-
-        // Check a translation is not findable in a word after being removed
-        $found = false;
-        foreach($entity->getTranslations() as $t) {
-            if ($t->getTerm() == $translationTerm) {
-                $found = true;
-            }
-        }
-        $this->assertFalse($found, 'Translation removed found');
+        $this->_em->flush(); // Should throw an exception as a translation cannot be linked to none word
     }
 
     public function testDeleteTranslation()
