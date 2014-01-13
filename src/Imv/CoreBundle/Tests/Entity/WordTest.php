@@ -36,10 +36,13 @@ class WordTest extends AbstractTestEntity
     public function testAddWordList()
     {
         $entity = new Word();
+        $entity->setDetails($this->getUniqueString());
+        $this->_em->persist($entity);
 
         $wordlists = array();
         for($i=0; $i<2; $i++) {
             $wordlist = new WordList();
+            $wordlist->setName($this->getUniqueString());
             $entity->addWordList($wordlist);
             $wordlists[] = $wordlist;
         }
@@ -56,6 +59,8 @@ class WordTest extends AbstractTestEntity
     public function testFindWordList()
     {
         $entity = new Word();
+        $entity->setDetails($this->getUniqueString());
+        $this->_em->persist($entity);
 
         $wordlist = new WordList();
         $wordlistName = $this->getUniqueString();
@@ -79,6 +84,8 @@ class WordTest extends AbstractTestEntity
     public function testRemoveWordList()
     {
         $entity = new Word();
+        $entity->setDetails($this->getUniqueString());
+        $this->_em->persist($entity);
 
         $wordlist = new WordList();
         $wordlistName = $this->getUniqueString();
@@ -111,8 +118,11 @@ class WordTest extends AbstractTestEntity
     public function testDeleteWordList()
     {
         $entity = new Word();
+        $entity->setDetails($this->getUniqueString());
+        $this->_em->persist($entity);
 
         $wordlist = new WordList();
+        $wordlist->setName($this->getUniqueString());
         $entity->addWordList($wordlist);
         $this->_em->flush();
 
@@ -129,10 +139,13 @@ class WordTest extends AbstractTestEntity
     public function testAddTranslation()
     {
         $entity = new Word();
+        $entity->setDetails($this->getUniqueString());
+        $this->_em->persist($entity);
 
         $translations = array();
         for($i=0; $i<2; $i++) {
             $translation = new Translation();
+            $translation->setTerm($this->getUniqueString());
             $entity->addTranslation($translation);
             $translations[] = $translation;
         }
@@ -149,6 +162,8 @@ class WordTest extends AbstractTestEntity
     public function testFindTranslation()
     {
         $entity = new Word();
+        $entity->setDetails($this->getUniqueString());
+        $this->_em->persist($entity);
 
         $translation = new Translation();
         $translationTerm = $this->getUniqueString();
@@ -172,6 +187,8 @@ class WordTest extends AbstractTestEntity
     public function testRemoveTranslation()
     {
         $entity = new Word();
+        $entity->setDetails($this->getUniqueString());
+        $this->_em->persist($entity);
 
         $translation = new Translation();
         $translationTerm = $this->getUniqueString();
@@ -204,8 +221,11 @@ class WordTest extends AbstractTestEntity
     public function testDeleteTranslation()
     {
         $entity = new Word();
+        $entity->setDetails($this->getUniqueString());
+        $this->_em->persist($entity);
 
         $translation = new Translation();
+        $translation->setTerm($this->getUniqueString());
         $entity->addTranslation($translation);
         $this->_em->flush();
 

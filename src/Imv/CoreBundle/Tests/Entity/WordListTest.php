@@ -35,14 +35,16 @@ class WordListTest extends AbstractTestEntity
     public function testAddWord()
     {
         $entity = new WordList();
+        $entity->setName($this->getUniqueString());
+        $this->_em->persist($entity);
 
         $words = array();
         for($i=0; $i<2; $i++) {
             $word = new Word();
+            $word->setDetails($this->getUniqueString());
             $entity->addWord($word);
             $words[] = $word;
         }
-        $this->_em->persist($entity);
         $this->_em->flush();
 
         // Reload the entity
@@ -56,6 +58,8 @@ class WordListTest extends AbstractTestEntity
     public function testFindWord()
     {
         $entity = new WordList();
+        $entity->setName($this->getUniqueString());
+        $this->_em->persist($entity);
 
         $word = new Word();
         $wordDetails = $this->getUniqueString();
@@ -79,6 +83,8 @@ class WordListTest extends AbstractTestEntity
     public function testRemoveWord()
     {
         $entity = new WordList();
+        $entity->setName($this->getUniqueString());
+        $this->_em->persist($entity);
 
         $word = new Word();
         $wordDetails = $this->getUniqueString();
@@ -112,8 +118,11 @@ class WordListTest extends AbstractTestEntity
     public function testDeleteWord()
     {
         $entity = new WordList();
+        $entity->setName($this->getUniqueString());
+        $this->_em->persist($entity);
 
         $word = new Word();
+        $word->setDetails($this->getUniqueString());
         $entity->addWord($word);
         $this->_em->flush();
 
