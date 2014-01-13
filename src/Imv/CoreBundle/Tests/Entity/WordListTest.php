@@ -24,7 +24,7 @@ class WordListTest extends AbstractTestEntity
         $this->_em->flush();
 
         // Reload the entity
-        $entity = $this->findEntity($entity->getId());
+        //$entity = $this->findEntity($entity->getId());
 
         // Test Name field
         $this->assertEquals($listName, $entity->getName(), 'Invalid wordlist name');
