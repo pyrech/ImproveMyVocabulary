@@ -33,6 +33,16 @@ class WordTest extends AbstractTestEntity
         $this->assertEquals($wordDetails, $entity->getDetails(), 'Invalid word details');
     }
 
+    public function testNullDetailsThrowsException()
+    {
+        $this->setExpectedException('\\Doctrine\\DBAL\\DBALException');
+
+        $entity = new Word();
+        $this->_em->persist($entity);
+
+        $this->_em->flush(); // Should throw an exception as the details cannot be null
+    }
+
     public function testAddWordList()
     {
         $entity = new Word();
@@ -184,7 +194,7 @@ class WordTest extends AbstractTestEntity
         $this->assertTrue($found, 'New translation added not found');
     }
 
-    public function testRemoveTranslationThrowException()
+    public function testRemoveTranslationThrowsException()
     {
         $this->setExpectedException('\\Doctrine\\DBAL\\DBALException');
 
@@ -193,8 +203,7 @@ class WordTest extends AbstractTestEntity
         $this->_em->persist($entity);
 
         $translation = new Translation();
-        $translationTerm = $this->getUniqueString();
-        $translation->setTerm($translationTerm);
+        $translation->setTerm($this->getUniqueString());
         $entity->addTranslation($translation);
         $this->_em->flush();
 

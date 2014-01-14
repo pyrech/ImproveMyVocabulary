@@ -32,6 +32,16 @@ class WordListTest extends AbstractTestEntity
         $this->assertEquals($listName, $entity->getName(), 'Invalid wordlist name');
     }
 
+    public function testNullNameThrowsException()
+    {
+        $this->setExpectedException('\\Doctrine\\DBAL\\DBALException');
+
+        $entity = new WordList();
+        $this->_em->persist($entity);
+
+        $this->_em->flush(); // Should throw an exception as the name cannot be null
+    }
+
     public function testAddWord()
     {
         $entity = new WordList();

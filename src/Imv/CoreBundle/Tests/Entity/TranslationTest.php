@@ -56,19 +56,31 @@ class TranslationTest extends AbstractTestEntity {
         $this->assertEquals($word, $entity->getWord(), 'Invalid word');
     }
 
-    public function testWithoutWordThrowException()
+    public function testNullTermThrowsException()
     {
         $this->setExpectedException('\\Doctrine\\DBAL\\DBALException');
 
         $entity = new Translation();
-        $translationTerm = $this->getUniqueString();
-        $entity->setTerm($translationTerm);
+        $word = new Word();
+        $word->setDetails($this->getUniqueString());
+        $entity->setWord($word);
         $this->_em->persist($entity);
 
-        $this->_em->flush(); // Should throw an exception as a translation cannot be linked to none word
+        $this->_em->flush(); // Should throw an exception as a term cannot be null
     }
 
-    public function testRemoveWordThrowException()
+    public function testNullWordThrowsException()
+    {
+        $this->setExpectedException('\\Doctrine\\DBAL\\DBALException');
+
+        $entity = new Translation();
+        $entity->setTerm($this->getUniqueString());
+        $this->_em->persist($entity);
+
+        $this->_em->flush(); // Should throw an exception as the word cannot be null
+    }
+
+    public function testRemoveWordThrowsException()
     {
         $this->setExpectedException('\\Doctrine\\DBAL\\DBALException');
 

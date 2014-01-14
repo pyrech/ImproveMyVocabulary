@@ -30,7 +30,7 @@ class LocaleTest extends AbstractTestEntity
         // Reload the entity
         //$entity = $this->reload($entity->getId());
 
-        // Test Details field
+        // Test Name & Code fields
         $this->assertEquals($localeName, $entity->getName(), 'Invalid locale name');
         $this->assertEquals($localeCode, $entity->getCode(), 'Invalid locale code');
     }
@@ -43,7 +43,7 @@ class LocaleTest extends AbstractTestEntity
         $entity->setCode($this->getUniqueString());
         $this->_em->persist($entity);
 
-        $this->_em->flush(); // Should throw an exception as a name cannot be null
+        $this->_em->flush(); // Should throw an exception as the name cannot be null
     }
 
     public function testNullCodeThrowsException()
@@ -54,6 +54,6 @@ class LocaleTest extends AbstractTestEntity
         $entity->setName($this->getUniqueString());
         $this->_em->persist($entity);
 
-        $this->_em->flush(); // Should throw an exception as a name cannot be null
+        $this->_em->flush(); // Should throw an exception as the code cannot be null
     }
 }
