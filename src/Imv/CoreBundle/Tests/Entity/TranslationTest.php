@@ -90,6 +90,7 @@ class TranslationTest extends AbstractTestEntity {
 
         $locale = new Locale();
         $locale->setCode($this->getUniqueString());
+        $locale->setName($this->getUniqueString());
         $entity->setLocale($locale);
 
         $this->_em->flush();
