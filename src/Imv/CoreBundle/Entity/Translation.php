@@ -95,7 +95,7 @@ class Translation implements EntityInterface
      *
      * @return Translation
      */
-    public function setLocale($locale)
+    public function setLocale(Locale $locale)
     {
         $this->locale = $locale;
         return $this;
