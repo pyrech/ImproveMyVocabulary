@@ -28,7 +28,7 @@ class LocaleTest extends AbstractTestEntity
         $this->_em->flush();
 
         // Reload the entity
-        //$entity = $this->reload($entity->getId());
+        $entity = $this->reload($entity);
 
         // Test Name & Code fields
         $this->assertEquals($localeName, $entity->getName(), 'Invalid locale name');

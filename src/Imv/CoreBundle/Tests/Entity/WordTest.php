@@ -27,7 +27,7 @@ class WordTest extends AbstractTestEntity
         $this->_em->flush();
 
         // Reload the entity
-        //$entity = $this->reload($entity->getId());
+        $entity = $this->reload($entity);
 
         // Test Details field
         $this->assertEquals($wordDetails, $entity->getDetails(), 'Invalid word details');
@@ -60,7 +60,7 @@ class WordTest extends AbstractTestEntity
         $this->_em->flush();
 
         // Reload the entity
-        //$entity = $this->findEntity($entity->getId());
+        $entity = $this->reload($entity);
 
         // Test the number of wordlist associated
         $this->assertEquals(2, $entity->getWordLists()->count(), 'Invalid number of wordlist');
@@ -79,7 +79,7 @@ class WordTest extends AbstractTestEntity
         $this->_em->flush();
 
         // Reload the entity
-        //$entity = $this->findEntity($entity->getId());
+        $entity = $this->reload($entity);
 
         // Check a wordlist is findable in a word
         $found = false;
@@ -110,7 +110,7 @@ class WordTest extends AbstractTestEntity
         $this->_em->flush();
 
         // Reload the entity
-        //$entity = $this->findEntity($entity->getId());
+        $entity = $this->reload($entity);
 
         // Test the number of word associated
         $this->assertEquals(0, $entity->getWordLists()->count(), 'Invalid number of wordlist');
@@ -136,11 +136,17 @@ class WordTest extends AbstractTestEntity
         $entity->addWordList($wordlist);
         $this->_em->flush();
 
+        // Reload the entity
+        $entity = $this->reload($entity);
+
         // Test the number of wordlist associated
         $this->assertEquals(1, $entity->getWordLists()->count(), 'Invalid number of wordlist');
 
         $this->_em->remove($wordlist);
         $this->_em->flush();
+
+        // Reload the entity
+        $entity = $this->reload($entity);
 
         // Test the number of wordlist associated
         $this->assertEquals(0, $entity->getWordLists()->count(), 'Invalid number of wordlist');
@@ -163,7 +169,7 @@ class WordTest extends AbstractTestEntity
         $this->_em->flush();
 
         // Reload the entity
-        //$entity = $this->findEntity($entity->getId());
+        $entity = $this->reload($entity);
 
         // Test the number of wordlist associated
         $this->assertEquals(2, $entity->getTranslations()->count(), 'Invalid number of translation');
@@ -182,7 +188,7 @@ class WordTest extends AbstractTestEntity
         $this->_em->flush();
 
         // Reload the entity
-        //$entity = $this->findEntity($entity->getId());
+        $entity = $this->reload($entity);
 
         // Check a translation is findable in a word
         $found = false;
@@ -230,6 +236,9 @@ class WordTest extends AbstractTestEntity
 
         $this->_em->remove($translation);
         $this->_em->flush();
+
+        // Reload the entity
+        $entity = $this->reload($entity);
 
         // Test the number of translation associated
         $this->assertEquals(0, $entity->getTranslations()->count(), 'Invalid number of translation');

@@ -32,7 +32,7 @@ class TranslationTest extends AbstractTestEntity {
         $this->_em->flush();
 
         // Reload the entity
-        //$entity = $this->reload($entity->getId());
+        $entity = $this->reload($entity);
 
         // Test Details field
         $this->assertEquals($translationTerm, $entity->getTerm(), 'Invalid translation term');
@@ -50,7 +50,7 @@ class TranslationTest extends AbstractTestEntity {
         $this->_em->flush();
 
         // Reload the entity
-        //$entity = $this->findEntity($entity->getId());
+        $entity = $this->reload($entity);
 
         // Test the word associated
         $this->assertEquals($word, $entity->getWord(), 'Invalid word');
@@ -120,7 +120,7 @@ class TranslationTest extends AbstractTestEntity {
         $this->_em->flush();
 
         // Reload the entity
-        //$entity = $this->findEntity($entity->getId());
+        $entity = $this->reload($entity);
 
         // Test the word associated
         $this->assertEquals($locale, $entity->getLocale(), 'Invalid locale');
