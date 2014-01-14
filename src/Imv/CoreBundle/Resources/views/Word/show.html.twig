@@ -5,7 +5,7 @@
 {% set _format_datetime = 'format.datetime'|trans %}
 
 {% set wordlist_links %}
-    {% for wl in entity.wordlists %}
+    {% for wl in entity.getWordLists() %}
         <a href="{{ path('imv_wordlist_show', wl.urlParams) }}">{{ wl.name }}</a>{% if not loop.last %}, {% endif %}
     {% endfor %}
 {% endset %}

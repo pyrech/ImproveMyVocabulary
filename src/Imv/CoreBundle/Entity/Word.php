@@ -186,7 +186,7 @@ class Word implements EntityInterface
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getWordlists()
+    public function getWordLists()
     {
         return $this->wordlists;
     }

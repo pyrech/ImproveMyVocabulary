@@ -63,7 +63,7 @@ class WordTest extends AbstractTestEntity
         //$entity = $this->findEntity($entity->getId());
 
         // Test the number of wordlist associated
-        $this->assertEquals(2, $entity->getWordlists()->count(), 'Invalid number of wordlist');
+        $this->assertEquals(2, $entity->getWordLists()->count(), 'Invalid number of wordlist');
     }
 
     public function testFindWordList()
@@ -104,7 +104,7 @@ class WordTest extends AbstractTestEntity
         $this->_em->flush();
 
         // Test the number of word associated
-        $this->assertEquals(1, $entity->getWordlists()->count(), 'Invalid number of wordlist');
+        $this->assertEquals(1, $entity->getWordLists()->count(), 'Invalid number of wordlist');
 
         $entity->removeWordList($wordlist);
         $this->_em->flush();
@@ -113,11 +113,11 @@ class WordTest extends AbstractTestEntity
         //$entity = $this->findEntity($entity->getId());
 
         // Test the number of word associated
-        $this->assertEquals(0, $entity->getWordlists()->count(), 'Invalid number of wordlist');
+        $this->assertEquals(0, $entity->getWordLists()->count(), 'Invalid number of wordlist');
 
         // Check a wordlist is not findable in a word after being removed
         $found = false;
-        foreach($entity->getWordlists() as $wl) {
+        foreach($entity->getWordLists() as $wl) {
             if ($wl->getName() == $wordlistName) {
                 $found = true;
             }
@@ -137,13 +137,13 @@ class WordTest extends AbstractTestEntity
         $this->_em->flush();
 
         // Test the number of wordlist associated
-        $this->assertEquals(1, $entity->getWordlists()->count(), 'Invalid number of wordlist');
+        $this->assertEquals(1, $entity->getWordLists()->count(), 'Invalid number of wordlist');
 
         $this->_em->remove($wordlist);
         $this->_em->flush();
 
         // Test the number of wordlist associated
-        $this->assertEquals(0, $entity->getWordlists()->count(), 'Invalid number of wordlist');
+        $this->assertEquals(0, $entity->getWordLists()->count(), 'Invalid number of wordlist');
     }
 
     public function testAddTranslation()
