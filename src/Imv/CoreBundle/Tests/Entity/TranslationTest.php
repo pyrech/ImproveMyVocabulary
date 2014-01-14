@@ -24,6 +24,10 @@ class TranslationTest extends AbstractTestEntity {
         $entity = new Translation();
         $this->_em->persist($entity);
 
+        $word = new Word();
+        $word->setDetails($this->getUniqueString());
+        $entity->setWord($word);
+
         $entity->setTerm($translationTerm);
         $this->_em->flush();
 
@@ -85,6 +89,7 @@ class TranslationTest extends AbstractTestEntity {
         $entity->setWord($word);
 
         $locale = new Locale();
+        $locale->setCode($this->getUniqueString());
         $entity->setLocale($locale);
 
         $this->_em->flush();
