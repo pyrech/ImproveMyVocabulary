@@ -3,6 +3,7 @@
 namespace Imv\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Trait Timestampable used by several entities to handle fields on create (createdAt), updated (updatedAt), etc.
