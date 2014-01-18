@@ -70,13 +70,23 @@ class WordController extends EntityController
     /**
      * Display a form to create a new Word entity.
      *
+     * If a WordList is present, the new word will be automatically
+     * added to the wordlist
+     *
      * @Route("/new", name="imv_word_new")
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
         $entity = new Word();
+
+        $wordlist_id = (int)$request->get('wordlist', null);
+        if (null !== $wordlist_id) {
+            $wordlist = $this->getManager()->getRepository('ImvCoreBundle:WordList')->find($wordlist_id);
+            $entity->addWordList($wordlist);
+        }
+
         $form   = $this->createCreateForm($entity);
 
         return array(

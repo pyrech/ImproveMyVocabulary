@@ -2,6 +2,7 @@
 
 namespace Imv\CoreBundle\Form;
 
+use Imv\CoreBundle\Entity\WordList;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -15,6 +16,13 @@ class WordType extends AbstractType
     {
         $builder
             ->add('details')
+            ->add('wordlists', 'entity', array(
+                'multiple'  => true,
+                'expanded' => true,
+                'property' => 'name',
+                'class'  => 'Imv\CoreBundle\Entity\WordList',
+                'by_reference' => false
+            ))
             ->add('translations', 'collection', array(
                 'type' => new TranslationType(),
                 'allow_add' => true,
