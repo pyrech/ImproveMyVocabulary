@@ -9,6 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 abstract class EntityController extends Controller
 {
+    const FORM_CREATE = 1;
+    const FORM_EDIT   = 2;
+    const FORM_DELETE = 3;
+
     /**
      * @var string
      */
@@ -77,6 +81,33 @@ abstract class EntityController extends Controller
     }
 
     /**
+     * Returns a FormBuilder with a FormType depending on the type of form wanted
+     *
+     * Can be overridden to allow differents FormType for New or Edit forms
+     * or to add behaviour in the FormBuilder before to create the form, for example.
+     *
+     * @param integer $type one of the self::FORM_XXX constant
+     * @param EntityInterface $entity
+     *
+     * @return \Symfony\Component\Form\FormBuilderInterface
+     *
+     * @throws \LogicException if $type is not one of EntityController::FORM_XXX constants
+     */
+    protected function getFormBuilder($type, EntityInterface $entity) {
+        $form_factory = $this->container->get('form.factory');
+        switch($type) {
+            case self::FORM_CREATE:
+            case self::FORM_EDIT:
+                return $form_factory->createBuilder($this->getFormType(), $entity);
+                break;
+            case self::FORM_DELETE:
+                return $form_factory->createBuilder();
+                break;
+        }
+        throw new \LogicException('Invalid type given ('.$type.'). Should be one of EntityController::FORM_XXX constants.');
+    }
+
+    /**
      * Creates a form to create a related entity.
      *
      * @param EntityInterface $entity The entity
@@ -86,7 +117,7 @@ abstract class EntityController extends Controller
      */
     protected function createCreateForm(EntityInterface $entity, $string='action.entity.create')
     {
-        return $this->container->get('form.factory')->createBuilder($this->getFormType(), $entity)
+        return $this->getFormBuilder(self::FORM_CREATE, $entity)
             ->setAction($this->generateUrl($this->getRouteName('create'), $entity->getUrlParams()))
             ->setMethod('POST')
             ->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)))
@@ -104,7 +135,7 @@ abstract class EntityController extends Controller
      */
     protected function createEditForm(EntityInterface $entity, $string='action.entity.update')
     {
-        return $this->container->get('form.factory')->createBuilder($this->getFormType(), $entity)
+        return $this->getFormBuilder(self::FORM_EDIT, $entity)
             ->setAction($this->generateUrl($this->getRouteName('update'), $entity->getUrlParams()))
             ->setMethod('PUT')
             ->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)))
@@ -122,7 +153,7 @@ abstract class EntityController extends Controller
      */
     protected function createDeleteForm(EntityInterface $entity, $string='action.entity.delete')
     {
-        return $this->container->get('form.factory')->createBuilder()
+        return $this->getFormBuilder(self::FORM_DELETE, $entity)
             ->setAction($this->generateUrl($this->getRouteName('delete'), $entity->getUrlParams()))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => $this->get('translator')->trans($string)))
