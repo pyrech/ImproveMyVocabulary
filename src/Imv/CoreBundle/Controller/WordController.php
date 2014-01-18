@@ -41,7 +41,7 @@ class WordController extends EntityController
     }
 
     /**
-     * Creates a new Word entity.
+     * Create a new Word entity.
      *
      * @Route("/", name="imv_word_create")
      * @Method("POST")
@@ -68,7 +68,7 @@ class WordController extends EntityController
     }
 
     /**
-     * Displays a form to create a new Word entity.
+     * Display a form to create a new Word entity.
      *
      * @Route("/new", name="imv_word_new")
      * @Method("GET")
@@ -86,7 +86,7 @@ class WordController extends EntityController
     }
 
     /**
-     * Finds and displays a Word entity.
+     * Find and display a Word entity.
      *
      * @Route("/{id}", requirements={"id": "\d+"}, name="imv_word_show")
      * @Method("GET")
@@ -103,7 +103,7 @@ class WordController extends EntityController
     }
 
     /**
-     * Displays a form to edit an existing Word entity.
+     * Display a form to edit an existing Word entity.
      *
      * @Route("/{id}/edit", requirements={"id" = "\d+"}, name="imv_word_edit")
      * @Method("GET")
@@ -122,7 +122,7 @@ class WordController extends EntityController
     }
 
     /**
-     * Edits an existing Word entity.
+     * Edit an existing Word entity.
      *
      * @Route("/{id}", requirements={"id" = "\d+"}, name="imv_word_update")
      * @Method("PUT")
@@ -148,7 +148,7 @@ class WordController extends EntityController
     }
 
     /**
-     * Deletes a Word entity.
+     * Delete a Word entity.
      *
      * @Route("/{id}", requirements={"id" = "\d+"}, name="imv_word_delete")
      * @Method("DELETE")

@@ -41,7 +41,7 @@ class WordListController extends EntityController
     }
 
     /**
-     * Lists all Word entities.
+     * List all Word entities.
      *
      * @Route("/", name="imv_wordlist")
      * @Method("GET")
@@ -54,7 +54,7 @@ class WordListController extends EntityController
     }
 
     /**
-     * Displays a form to create a new Word entity.
+     * Display a form to create a new Word entity.
      *
      * @Route("/new", name="imv_wordlist_new")
      * @Method("GET")
@@ -72,7 +72,7 @@ class WordListController extends EntityController
     }
 
     /**
-     * Finds and displays a WordList entity and its attached words.
+     * Find and display a WordList entity and its attached words.
      *
      * @Route("/{id}", requirements={"id" = "\d+"}, name="imv_wordlist_show")
      * @Method("GET")
@@ -89,7 +89,7 @@ class WordListController extends EntityController
     }
 
     /**
-     * Creates a new Wordlist entity.
+     * Create a new Wordlist entity.
      *
      * @Route("/", name="imv_wordlist_create")
      * @Method("POST")
@@ -116,7 +116,7 @@ class WordListController extends EntityController
     }
 
     /**
-     * Displays a form to edit an existing WordList entity.
+     * Display a form to edit an existing WordList entity.
      *
      * @Route("/{id}/edit", requirements={"id" = "\d+"}, name="imv_wordlist_edit")
      * @Method("GET")
@@ -135,7 +135,7 @@ class WordListController extends EntityController
     }
 
     /**
-     * Edits an existing WordList entity.
+     * Edit an existing WordList entity.
      *
      * @Route("/{id}", requirements={"id" = "\d+"}, name="imv_wordlist_update")
      * @Method("PUT")
@@ -161,7 +161,7 @@ class WordListController extends EntityController
     }
 
     /**
-     * Deletes a WordList entity.
+     * Delete a WordList entity.
      *
      * @Route("/{id}", requirements={"id" = "\d+"}, name="imv_wordlist_delete")
      * @Method("DELETE")
