@@ -2,7 +2,6 @@
 
 namespace Imv\CoreBundle\Form;
 
-use Imv\CoreBundle\Entity\WordList;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
