@@ -123,7 +123,7 @@ class Word implements EntityInterface
     {
         $this->translations->removeElement($translation);
         if ($cascade) {
-            $translation->removeWord($this, false);
+            $translation->removeWord(false);
         }
     }
 
