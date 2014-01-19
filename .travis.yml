@@ -10,4 +10,8 @@ before_script:
     - COMPOSER_ROOT_VERSION=dev-master composer --prefer-source --dev install
     - php app/console doctrine:schema:update --force
 
-script: phpunit -c app
+script: phpunit --coverage-text --coverage-clover=coverage.clove -c app
+
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
