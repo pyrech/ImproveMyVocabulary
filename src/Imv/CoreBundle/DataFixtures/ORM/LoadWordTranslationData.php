@@ -1,6 +1,6 @@
 <?php
 
-namespace Img\CoreBundle\DataFixtures\ORM;
+namespace Imv\CoreBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -16,7 +16,6 @@ class LoadWordTranslationData extends AbstractFixture implements OrderedFixtureI
     public function load(ObjectManager $manager)
     {
         $wordlist = $this->getReference('verbes-list');
-        //$locales = $this->getReference('locales');
 
         $data = array('sleep' => array('fr' => 'dormir',
                                        'en' => 'sleep'),
@@ -37,8 +36,6 @@ class LoadWordTranslationData extends AbstractFixture implements OrderedFixtureI
             {
                 $translation = new Translation();
                 $translation->setLocale($this->getReference('locale-'.$locale));
-                //$translation->setLocale($locales->get($locale));
-                //$translation->setLocale($locales[$locale]);
                 $translation->setTerm($term);
                 $word->addTranslation($translation);
                 $manager->persist($translation);

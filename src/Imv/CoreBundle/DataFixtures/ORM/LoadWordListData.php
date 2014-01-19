@@ -1,6 +1,6 @@
 <?php
 
-namespace Img\CoreBundle\DataFixtures\ORM;
+namespace Imv\CoreBundle\DataFixtures\ORM;
  
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
